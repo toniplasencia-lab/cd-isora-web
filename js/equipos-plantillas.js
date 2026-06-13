@@ -51,7 +51,8 @@ window.PLANTILLAS = {
 
   /* ---------- CADETE ---------- */
   cadete: [
-    // { foto: 'img/equipos/cadete/jugador-1.png', nombre: 'Nombre Apellido' },
+    { foto: 'img/equipos/cadete/josemanuel.png', nombre: 'José Manuel' },
+    { foto: 'img/equipos/cadete/paul.png',       nombre: 'Paul' },
   ],
 
   /* ---------- FEMENINO ---------- */
