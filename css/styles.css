@@ -1325,3 +1325,144 @@ main {
     font-size: .85rem;
   }
 }
+
+/* =====================================================================
+   EQUIPOS · página resumen — foto grupal y CTA
+   ===================================================================== */
+
+.equipo-foto-grupal {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 1.4rem;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0,0,0,.10);
+  background: #e9ecf3 url('../img/fondo-escudos.png') center/contain no-repeat;
+  aspect-ratio: 16 / 9;
+}
+.equipo-foto-grupal img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none; /* Por defecto oculta. Se muestra cuando carga bien (onload) */
+  position: relative;
+  z-index: 2;
+}
+.equipo-foto-grupal--cargada img {
+  display: block;
+}
+.equipo-foto-grupal--cargada .equipo-foto-grupal__placeholder {
+  display: none;
+}
+.equipo-foto-grupal__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,.55);
+  color: #0c2d6b;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  z-index: 1;
+  text-align: center;
+  padding: 1rem;
+}
+
+.equipo-cta {
+  text-align: center;
+  margin-top: .6rem;
+}
+.equipo-volver {
+  margin-bottom: .4rem;
+}
+
+/* Botones de utilidad por si no existen en tu styles base */
+.btn {
+  display: inline-block;
+  padding: .65rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: .98rem;
+  transition: transform .15s, box-shadow .2s, background .2s;
+  border: 2px solid transparent;
+}
+.btn--primario {
+  background: var(--color-primario, #0c2d6b);
+  color: #fff;
+}
+.btn--primario:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(12,45,107,.30);
+}
+.btn--secundario {
+  background: #fff;
+  color: var(--color-primario, #0c2d6b);
+  border-color: var(--color-primario, #0c2d6b);
+}
+.btn--secundario:hover {
+  background: var(--color-primario, #0c2d6b);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* =====================================================================
+   JUGADORES · variante con fondo de escudos del club
+   (para las páginas plantilla-*.html)
+   ===================================================================== */
+
+.jugadores-grid--escudos {
+  background: #f6f8ff url('../img/fondo-escudos.png') center/280px repeat;
+  padding: 2rem 1.2rem;
+}
+
+.jugadores-grid--escudos .jugador-card__foto-wrap {
+  width: 170px;
+  height: 200px;
+  border-radius: 14px;
+  border: none;
+  background: transparent;
+  overflow: visible;
+  box-shadow: none;
+}
+.jugadores-grid--escudos .jugador-card__foto-wrap:hover {
+  transform: scale(1.05);
+  box-shadow: none;
+}
+.jugadores-grid--escudos .jugador-card__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 6px 10px rgba(0,0,0,.25));
+}
+.jugadores-grid--escudos .jugador-card__foto-wrap--placeholder {
+  background: rgba(12,45,107,.85);
+  border-radius: 14px;
+}
+.jugadores-grid--escudos .jugador-card__nombre {
+  margin-top: .5rem;
+  font-size: .98rem;
+  color: #0c2d6b;
+  text-shadow: 0 1px 0 rgba(255,255,255,.7);
+  max-width: 170px;
+}
+
+@media (max-width: 480px) {
+  .jugadores-grid--escudos {
+    background-size: 200px;
+    padding: 1.4rem .8rem;
+  }
+  .jugadores-grid--escudos .jugador-card__foto-wrap {
+    width: 130px;
+    height: 160px;
+  }
+  .jugadores-grid--escudos .jugador-card__nombre {
+    max-width: 130px;
+    font-size: .9rem;
+  }
+}

@@ -1,17 +1,35 @@
 CARPETA: img/equipos/cadete/
 ============================================
 
-Aquí van las fotos de los jugadores/jugadoras del equipo cadete.
+Aquí van las fotos de los jugadores/jugadoras del equipo cadete
+y también la foto grupal del equipo.
 
-Recomendaciones:
-- Formato: .jpg o .webp
-- Tamaño ideal: 600 x 600 px (cuadrada)
-- Peso: por debajo de 300 KB por foto
+== FOTO GRUPAL DEL EQUIPO ==
+Nombre del archivo:  grupo.jpg  (o grupo.png)
+Esta foto aparece en la página equipos.html
+Recomendado: foto horizontal 1600x900 px.
+
+== FOTOS INDIVIDUALES DE JUGADORES ==
+Aparecen en la página plantilla-cadete.html
+
+IMPORTANTE: las fotos individuales tienen que estar RECORTADAS
+(sin fondo), formato .PNG con transparencia. Así se ve el patrón
+de escudos del club detrás de cada jugador.
+
+Cómo recortar gratis:
+  - Web: https://www.remove.bg
+  - Canva: "Editar foto" → "Eliminar fondo"
+  - Photoshop: "Selección → Quitar fondo"
+
+Recomendaciones para las fotos individuales:
+  - Formato: .png con fondo transparente
+  - Tamaño ideal: 600 x 800 px (vertical)
+  - Peso: por debajo de 500 KB por foto
 
 Después de copiar las fotos aquí, edita el archivo:
   js/equipos-plantillas.js
 
 Y añade una línea por jugador dentro del bloque "cadete":
-  { foto: 'img/equipos/cadete/nombre-archivo.jpg', nombre: 'Nombre Apellido' },
+  { foto: 'img/equipos/cadete/nombre-archivo.png', nombre: 'Nombre Apellido' },
 
 Recarga la web con Ctrl+F5 para ver los cambios.

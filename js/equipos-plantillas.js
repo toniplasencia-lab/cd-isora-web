@@ -2,7 +2,7 @@
    EQUIPOS · LISTADO DE JUGADORES POR EQUIPO
    ---------------------------------------------------------------------
    Este es el ÚNICO archivo que tienes que tocar cuando quieras añadir,
-   quitar o cambiar jugadores en la página "Equipos".
+   quitar o cambiar jugadores en las páginas plantilla-*.html.
 
    Tu estructura de carpetas:
      img/equipos/regional/
@@ -11,11 +11,16 @@
      img/equipos/femenino/
      img/equipos/veteranos/
 
+   IMPORTANTE: las fotos de los jugadores tienen que estar RECORTADAS
+   (sin fondo), en formato .PNG transparente, para que se vean los
+   escudos del club detrás. Puedes hacerlo gratis con remove.bg o con
+   Canva ("Eliminar fondo").
+
    Cómo añadir un jugador nuevo:
-     1. Copia su foto dentro de la carpeta del equipo correspondiente.
-        Recomendado: foto cuadrada de unos 600x600 px, formato .jpg o .webp.
+     1. Copia su foto en PNG transparente dentro de la carpeta del
+        equipo correspondiente. Recomendado 600x800 px, peso < 500 KB.
      2. Añade una línea dentro del bloque de ese equipo con:
-          { foto: 'img/equipos/CARPETA/nombre-archivo.jpg', nombre: 'Nombre Apellido' },
+          { foto: 'img/equipos/CARPETA/nombre-archivo.png', nombre: 'Nombre Apellido' },
      3. Guarda el archivo y recarga la web con Ctrl+F5.
 
    Cómo cambiar el nombre de un jugador:
@@ -36,32 +41,27 @@ window.PLANTILLAS = {
 
   /* ---------- REGIONAL ---------- */
   regional: [
-    { foto: 'img/equipos/regional/josemanuel.jpeg', nombre: 'José Manuel' },
-    { foto: 'img/equipos/regional/paul.jpeg',       nombre: 'Paul' },
+    // { foto: 'img/equipos/regional/jugador-1.png', nombre: 'Nombre Apellido' },
   ],
 
   /* ---------- JUVENIL ---------- */
   juvenil: [
-    { foto: 'img/equipos/juvenil/josemanuel.jpeg', nombre: 'José Manuel' },
-    { foto: 'img/equipos/juvenil/paul.jpeg',       nombre: 'Paul' },
+    // { foto: 'img/equipos/juvenil/jugador-1.png', nombre: 'Nombre Apellido' },
   ],
 
   /* ---------- CADETE ---------- */
   cadete: [
-    { foto: 'img/equipos/cadete/josemanuel.jpeg', nombre: 'José Manuel' },
-    { foto: 'img/equipos/cadete/paul.jpeg',       nombre: 'Paul' },
+    // { foto: 'img/equipos/cadete/jugador-1.png', nombre: 'Nombre Apellido' },
   ],
 
   /* ---------- FEMENINO ---------- */
   femenino: [
-    { foto: 'img/equipos/femenino/josemanuel.jpeg', nombre: 'José Manuel' },
-    { foto: 'img/equipos/femenino/paul.jpeg',       nombre: 'Paul' },
+    // { foto: 'img/equipos/femenino/jugadora-1.png', nombre: 'Nombre Apellido' },
   ],
 
   /* ---------- VETERANOS ---------- */
   veteranos: [
-    { foto: 'img/equipos/veteranos/josemanuel.jpeg', nombre: 'José Manuel' },
-    { foto: 'img/equipos/veteranos/paul.jpeg',       nombre: 'Paul' },
+    // { foto: 'img/equipos/veteranos/jugador-1.png', nombre: 'Nombre Apellido' },
   ],
 
 };
