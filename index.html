@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CD Unión Isora — Inicio</title>
-  <meta name="description" content="Web oficial del CD Unión Isora. Noticias, partidos, abonados e historia del club." />
+  <meta name="description" content="Web oficial del CD Unión Isora. Noticias, partidos, abonados e historia del club de fútbol de Guía de Isora desde 1932." />
   <link rel="stylesheet" href="css/styles.css" />
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -31,7 +31,7 @@
   <meta name="twitter:title" content="Club Deportivo Unión Isora" />
   <meta name="twitter:description" content="Web oficial del Club Deportivo Unión Isora. 94 años de fútbol en Guía de Isora, Tenerife." />
   <meta name="twitter:image" content="https://www.cdunionisora.es/img/logo-club.png" />
-<!-- Schema.org - Datos estructurados para Google -->
+  <!-- Schema.org - Datos estructurados para Google -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -68,8 +68,6 @@
     ]
   }
   </script>
-
-
 </head>
 <body>
 
@@ -81,12 +79,13 @@
       <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
 
       <ul class="nav__menu">
-        <li><a href="index.html"        class="nav__link nav__link--active">Inicio</a></li>
-        <li><a href="historia.html"     class="nav__link">Historia</a></li>
-        <li><a href="abonados.html"     class="nav__link">Abonados</a></li>
-        <li><a href="partidos.html"     class="nav__link">Partidos</a></li>
-        <li><a href="equipos.html" class="nav__link">Equipos</a></li>
-        <li><a href="tienda.html" class="nav__link">Tienda</a></li>        <li><a href="colaboradores.html" class="nav__link">Colaboradores</a></li>
+        <li><a href="index.html"         class="nav__link nav__link--active">Inicio</a></li>
+        <li><a href="historia.html"      class="nav__link">Historia</a></li>
+        <li><a href="abonados.html"      class="nav__link">Abonados</a></li>
+        <li><a href="partidos.html"      class="nav__link">Partidos</a></li>
+        <li><a href="equipos.html"       class="nav__link">Equipos</a></li>
+        <li><a href="tienda.html"        class="nav__link">Tienda</a></li>
+        <li><a href="colaboradores.html" class="nav__link">Colaboradores</a></li>
       </ul>
     </nav>
   </header>
@@ -97,10 +96,10 @@
       <img src="img/logo-club.png" alt="Escudo CD Unión Isora" class="hero__logo" />
       <div class="hero__content">
         <h1>Bienvenidos al CD Unión Isora</h1>
-        <p>El club de fútbol del corazón de Isora. Pasión, cantera y tradición desde nuestra fundación.</p>
+        <p>Desde <strong>1932</strong>. 94 años de fútbol, pasión y cantera en el corazón de Guía de Isora.</p>
         <p class="hero__actions">
           <a href="abonados.html" class="btn">Hazte abonado</a>
-          <a href="partidos.html" class="btn btn--outline">Ver próximos partidos</a>
+          <a href="partidos.html" class="btn btn--outline">Ver calendario</a>
         </p>
       </div>
     </div>
@@ -109,6 +108,22 @@
   <!-- ============== CONTENIDO ============== -->
   <main>
     <div class="container">
+
+      <!-- ============== PRÓXIMO PARTIDO DESTACADO ============== -->
+      <section class="section">
+        <div class="proximo-partido" id="proximo-partido">
+          <div class="proximo-partido__header">
+            <span class="proximo-partido__badge">Próximo partido · Equipo Regional</span>
+          </div>
+          <div class="proximo-partido__body" id="proximo-partido-body">
+            <p class="proximo-partido__loading">Cargando próximo partido...</p>
+          </div>
+          <div class="proximo-partido__footer">
+            <a href="partidos.html" class="btn btn--outline btn--sm">Ver todos los partidos</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=Campo+Municipal+Tom%C3%A1s+Hern%C3%A1ndez+Alonso+Gu%C3%ADa+de+Isora" target="_blank" rel="noopener" class="btn btn--sm">📍 Cómo llegar al campo</a>
+          </div>
+        </div>
+      </section>
 
       <!-- ============== FEDERACIÓN TINERFEÑA ============== -->
       <section class="section">
@@ -122,27 +137,21 @@
             <div class="fed-card__icon">📅</div>
             <h3>Próximos partidos</h3>
             <p>Consulta el calendario completo del CD Unión Isora en la web oficial de la Federación.</p>
-            <a class="fed-card__link" href="https://futboltenerife.com/clubs/club-deportivo-union-isora" target="_blank" rel="noopener noreferrer">
-              Ver calendario
-            </a>
+            <a class="fed-card__link" href="https://futboltenerife.com/clubs/club-deportivo-union-isora" target="_blank" rel="noopener noreferrer">Ver calendario</a>
           </article>
 
           <article class="fed-card">
             <div class="fed-card__icon">⚽</div>
             <h3>Resultados</h3>
             <p>Resultados de los últimos encuentros disputados por todos los equipos del club.</p>
-            <a class="fed-card__link" href="https://futboltenerife.com/clubs/club-deportivo-union-isora" target="_blank" rel="noopener noreferrer">
-              Ver resultados
-            </a>
+            <a class="fed-card__link" href="https://futboltenerife.com/clubs/club-deportivo-union-isora" target="_blank" rel="noopener noreferrer">Ver resultados</a>
           </article>
 
           <article class="fed-card">
             <div class="fed-card__icon">🏆</div>
             <h3>Clasificación</h3>
             <p>Posición del equipo en su grupo y estadísticas detalladas de la temporada.</p>
-            <a class="fed-card__link" href="https://futboltenerife.com" target="_blank" rel="noopener noreferrer">
-              Ver clasificación
-            </a>
+            <a class="fed-card__link" href="https://futboltenerife.com" target="_blank" rel="noopener noreferrer">Ver clasificación</a>
           </article>
         </div>
 
@@ -151,131 +160,21 @@
         </p>
       </section>
 
-      <section class="section">
-        <h2 class="section__title">Últimas novedades</h2>
-        <div class="grid grid--3">
-          <article class="card">
-            <h3>Pretemporada 2026/27</h3>
-            <p>Arranca la preparación con la incorporación de nuevos jugadores y un calendario de amistosos.</p>
-            <a href="partidos.html">Ver calendario →</a>
-          </article>
-          <article class="card">
-            <h3>Campaña de abonados</h3>
-            <p>Renueva o hazte nuevo abonado con descuentos especiales para socios y familias.</p>
-            <a href="abonados.html">Más información →</a>
-          </article>
-          <article class="card">
-            <h3>Nuestra historia</h3>
-            <p>Descubre el recorrido del club, sus hitos y los nombres que marcaron una época.</p>
-            <a href="historia.html">Leer historia →</a>
-          </article>
-        </div>
-      </section>
-
+      <!-- ============== EL CLUB EN CIFRAS ============== -->
       <section class="section">
         <h2 class="section__title">El club en cifras</h2>
         <div class="grid grid--3">
           <div class="card" style="text-align:center;">
-            <h3 style="font-size:2.4rem; color: var(--color-secondary);">+50</h3>
-            <p>Años de historia</p>
+            <h3 style="font-size:2.4rem; color: var(--color-secondary);">94</h3>
+            <p>Años de historia desde 1932</p>
           </div>
           <div class="card" style="text-align:center;">
-            <h3 style="font-size:2.4rem; color: var(--color-secondary);">12</h3>
-            <p>Equipos de cantera</p>
+            <h3 style="font-size:2.4rem; color: var(--color-secondary);">5</h3>
+            <p>Equipos: regional, juvenil, cadete, femenino y veteranos</p>
           </div>
           <div class="card" style="text-align:center;">
-            <h3 style="font-size:2.4rem; color: var(--color-secondary);">800+</h3>
-            <p>Abonados</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============== COLABORADORES (CARRUSEL) ============== -->
-      <section class="section">
-        <h2 class="section__title">Nuestros colaboradores</h2>
-        <p style="text-align:center; color: var(--color-muted); margin-bottom: 1.5rem;">
-          Empresas y comercios que hacen posible el club
-          · <a href="colaboradores.html">Ver todos →</a>
-        </p>
-
-        <div class="logos-marquee" aria-label="Logotipos de las empresas colaboradoras del club">
-          <div class="logos-marquee__track">
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-4R.jpeg" data-name="4R"><img src="img/publicidad/publi-4R.jpeg" alt="4R" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-Labarrera.png" data-name="La Barrera"><img src="img/publicidad/publi-Labarrera.png" alt="La Barrera" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-allegro.png" data-name="Allegro"><img src="img/publicidad/publi-allegro.png" alt="Allegro" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-aluminiosmarcos.png" data-name="Aluminios Marcos"><img src="img/publicidad/publi-aluminiosmarcos.png" alt="Aluminios Marcos" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-alvaro.jpeg" data-name="Álvaro"><img src="img/publicidad/publi-alvaro.jpeg" alt="Álvaro" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-autoescuelaguia.jpeg" data-name="Autoescuela Guía"><img src="img/publicidad/publi-autoescuelaguia.jpeg" alt="Autoescuela Guía" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-bendita.png" data-name="Bendita"><img src="img/publicidad/publi-bendita.png" alt="Bendita" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-bodegonantonio.png" data-name="Bodegón Antonio"><img src="img/publicidad/publi-bodegonantonio.png" alt="Bodegón Antonio" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-cairos.jpeg" data-name="Cairós"><img src="img/publicidad/publi-cairos.jpeg" alt="Cairós" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-carmenboletos.jpeg" data-name="Carmen Boletos"><img src="img/publicidad/publi-carmenboletos.jpeg" alt="Carmen Boletos" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-construccionesJD.jpeg" data-name="Construcciones JD"><img src="img/publicidad/publi-construccionesJD.jpeg" alt="Construcciones JD" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-daytona.png" data-name="Daytona"><img src="img/publicidad/publi-daytona.png" alt="Daytona" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-deportessantiago2.png" data-name="Deportes Santiago"><img src="img/publicidad/publi-deportessantiago2.png" alt="Deportes Santiago" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-duragym1.png" data-name="Duragym"><img src="img/publicidad/publi-duragym1.png" alt="Duragym" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-europtica.png" data-name="Európtica"><img src="img/publicidad/publi-europtica.png" alt="Európtica" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-explotaciones.jpeg" data-name="Explotaciones"><img src="img/publicidad/publi-explotaciones.jpeg" alt="Explotaciones" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-feretteriaplaya2.png" data-name="Ferretería Playa"><img src="img/publicidad/publi-feretteriaplaya2.png" alt="Ferretería Playa" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-fontapuru.png" data-name="Fontapuru"><img src="img/publicidad/publi-fontapuru.png" alt="Fontapuru" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-fullcontodo.jpeg" data-name="Full Con Todo"><img src="img/publicidad/publi-fullcontodo.jpeg" alt="Full Con Todo" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-gc1.png" data-name="GC"><img src="img/publicidad/publi-gc1.png" alt="GC" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-gloria.png" data-name="Gloria"><img src="img/publicidad/publi-gloria.png" alt="Gloria" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-integrity.jpeg" data-name="Integrity"><img src="img/publicidad/publi-integrity.jpeg" alt="Integrity" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-jardineslevi.jpeg" data-name="Jardines Levi"><img src="img/publicidad/publi-jardineslevi.jpeg" alt="Jardines Levi" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-lo+barato.jpeg" data-name="Lo+Barato"><img src="img/publicidad/publi-lo+barato.jpeg" alt="Lo+Barato" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-lopezgon.png" data-name="López Gon"><img src="img/publicidad/publi-lopezgon.png" alt="López Gon" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-minimarket1.png" data-name="Minimarket"><img src="img/publicidad/publi-minimarket1.png" alt="Minimarket" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-mueblesisora1.png" data-name="Muebles Isora"><img src="img/publicidad/publi-mueblesisora1.png" alt="Muebles Isora" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-occident.png" data-name="Occident"><img src="img/publicidad/publi-occident.png" alt="Occident" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-opkapi1.jpeg" data-name="Opkapi"><img src="img/publicidad/publi-opkapi1.jpeg" alt="Opkapi" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-peluqueriasr.png" data-name="Peluquería SR"><img src="img/publicidad/publi-peluqueriasr.png" alt="Peluquería SR" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-pintecor.jpeg" data-name="Pintecor"><img src="img/publicidad/publi-pintecor.jpeg" alt="Pintecor" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-placahome.png" data-name="Placahome"><img src="img/publicidad/publi-placahome.png" alt="Placahome" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-reformamartin.jpeg" data-name="Reforma Martín"><img src="img/publicidad/publi-reformamartin.jpeg" alt="Reforma Martín" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-servicioseljunquito.jpeg" data-name="Servicios El Junquito"><img src="img/publicidad/publi-servicioseljunquito.jpeg" alt="Servicios El Junquito" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-strago.jpeg" data-name="Strago"><img src="img/publicidad/publi-strago.jpeg" alt="Strago" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-tallerisora.jpeg" data-name="Taller Isora"><img src="img/publicidad/publi-tallerisora.jpeg" alt="Taller Isora" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-waibel1.jpeg" data-name="Waibel"><img src="img/publicidad/publi-waibel1.jpeg" alt="Waibel" loading="lazy" /></button>
-
-            <!-- Set 2 (duplicado para bucle infinito) -->
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-4R.jpeg" data-name="4R" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-4R.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-Labarrera.png" data-name="La Barrera" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-Labarrera.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-allegro.png" data-name="Allegro" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-allegro.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-aluminiosmarcos.png" data-name="Aluminios Marcos" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-aluminiosmarcos.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-alvaro.jpeg" data-name="Álvaro" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-alvaro.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-autoescuelaguia.jpeg" data-name="Autoescuela Guía" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-autoescuelaguia.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-bendita.png" data-name="Bendita" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-bendita.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-bodegonantonio.png" data-name="Bodegón Antonio" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-bodegonantonio.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-cairos.jpeg" data-name="Cairós" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-cairos.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-carmenboletos.jpeg" data-name="Carmen Boletos" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-carmenboletos.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-construccionesJD.jpeg" data-name="Construcciones JD" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-construccionesJD.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-daytona.png" data-name="Daytona" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-daytona.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-deportessantiago2.png" data-name="Deportes Santiago" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-deportessantiago2.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-duragym1.png" data-name="Duragym" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-duragym1.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-europtica.png" data-name="Európtica" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-europtica.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-explotaciones.jpeg" data-name="Explotaciones" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-explotaciones.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-feretteriaplaya2.png" data-name="Ferretería Playa" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-feretteriaplaya2.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-fontapuru.png" data-name="Fontapuru" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-fontapuru.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-fullcontodo.jpeg" data-name="Full Con Todo" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-fullcontodo.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-gc1.png" data-name="GC" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-gc1.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-gloria.png" data-name="Gloria" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-gloria.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-integrity.jpeg" data-name="Integrity" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-integrity.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-jardineslevi.jpeg" data-name="Jardines Levi" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-jardineslevi.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-lo+barato.jpeg" data-name="Lo+Barato" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-lo+barato.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-lopezgon.png" data-name="López Gon" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-lopezgon.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-minimarket1.png" data-name="Minimarket" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-minimarket1.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-mueblesisora1.png" data-name="Muebles Isora" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-mueblesisora1.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-occident.png" data-name="Occident" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-occident.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-opkapi1.jpeg" data-name="Opkapi" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-opkapi1.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-peluqueriasr.png" data-name="Peluquería SR" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-peluqueriasr.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-pintecor.jpeg" data-name="Pintecor" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-pintecor.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-placahome.png" data-name="Placahome" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-placahome.png" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-reformamartin.jpeg" data-name="Reforma Martín" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-reformamartin.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-servicioseljunquito.jpeg" data-name="Servicios El Junquito" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-servicioseljunquito.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-strago.jpeg" data-name="Strago" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-strago.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-tallerisora.jpeg" data-name="Taller Isora" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-tallerisora.jpeg" alt="" loading="lazy" /></button>
-            <button type="button" class="logos-marquee__item js-logo" data-src="img/publicidad/publi-waibel1.jpeg" data-name="Waibel" aria-hidden="true" tabindex="-1"><img src="img/publicidad/publi-waibel1.jpeg" alt="" loading="lazy" /></button>
+            <h3 style="font-size:2.4rem; color: var(--color-secondary);">+200</h3>
+            <p>Abonados que hacen posible el club</p>
           </div>
         </div>
       </section>
@@ -312,36 +211,26 @@
         </div>
       </section>
 
+      <!-- ============== LLAMADA A LA ACCIÓN FINAL ============== -->
+      <section class="section cta-final">
+        <div class="cta-final__inner">
+          <h2 class="cta-final__title">¿Quieres formar parte del club?</h2>
+          <p class="cta-final__text">Hazte abonado, sigue al equipo cada fin de semana y vive el fútbol de Guía de Isora.</p>
+          <div class="cta-final__buttons">
+            <a href="abonados.html" class="btn">Hazme abonado</a>
+            <a href="https://wa.me/34659995075" target="_blank" rel="noopener" class="btn btn--whatsapp">💬 Contactar por WhatsApp</a>
+          </div>
+        </div>
+      </section>
+
     </div>
   </main>
-
-
-  <!-- ============== MODAL / VENTANA EMERGENTE ============== -->
-  <div class="modal" id="logoModal" role="dialog" aria-modal="true" aria-labelledby="logoModalTitle" aria-hidden="true">
-    <div class="modal__backdrop" data-modal-close></div>
-    <div class="modal__dialog" role="document">
-      <button type="button" class="modal__close" aria-label="Cerrar" data-modal-close>×</button>
-      <h3 class="modal__title" id="logoModalTitle">Colaborador</h3>
-      <div class="modal__body">
-        <img class="modal__image" id="logoModalImage" src="" alt="" />
-      </div>
-    </div>
-  </div>
 
   <!-- ============== FOOTER ============== -->
   <footer class="site-footer">
     <div class="container">
       <p><strong>CD Unión Isora</strong> · Guía de Isora, Tenerife</p>
       <p>Contacto: <a href="mailto:cdunionisora2019@gmail.com">cdunionisora2019@gmail.com</a></p>
-
-      <div class="site-footer__social" aria-label="Redes sociales del club">
-        <a href="https://www.instagram.com/c.d.unionisora/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-1.8.4-2.2.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 8.5 2.6 8.9 2.6 12s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5-2.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
-        </a>
-        <a href="https://www.facebook.com/CD.UnionIsora/?locale=es_ES" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.13 8.44 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99C18.34 21.13 22 16.99 22 12z"/></svg>
-        </a>
-      </div>
 
       <ul class="site-footer__legal">
         <li><a href="aviso-legal.html">Aviso legal</a></li>
@@ -354,8 +243,12 @@
     </div>
   </footer>
 
+  <!-- Cliente de Supabase para el próximo partido -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/config.js"></script>
   <script src="js/main.js"></script>
   <script src="js/cookies.js"></script>
   <script src="js/colaboradores.js"></script>
+  <script src="js/proximo-partido.js"></script>
 </body>
 </html>
