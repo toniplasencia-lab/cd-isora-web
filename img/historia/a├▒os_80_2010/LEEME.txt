@@ -1,0 +1,8 @@
+Coloca aquí las fotografías correspondientes a este periodo.
+
+Formatos válidos: .jpg .jpeg .png .webp
+Tamaño recomendado: hasta 1600 píxeles de ancho.
+
+Después, abre el archivo  js/historia-fotos.js  y añade una línea por
+cada foto con el formato:
+  { src: 'img/historia/años_80_2010/nombre-de-tu-foto.jpg', caption: 'Texto a mostrar debajo' },

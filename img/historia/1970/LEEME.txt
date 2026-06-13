@@ -1,0 +1,9 @@
+Coloca aquí las fotografías de los años 1970.
+
+Formatos válidos: .jpg .jpeg .png .webp
+Tamaño recomendado: hasta 1600 píxeles de ancho.
+
+Después de copiar tus fotos a esta carpeta, abre el archivo
+  js/historia-fotos.js
+y añade una línea por cada foto, con el formato:
+  { src: 'img/historia/1970/nombre-de-tu-foto.jpg', caption: 'Texto a mostrar debajo' },
