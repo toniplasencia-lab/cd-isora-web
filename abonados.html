@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CD Unión Isora — Abonados</title>
+  <meta name="description" content="Campaña de abonados del CD Unión Isora. Modalidades, precios y formulario de alta." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============== HEADER + NAV COMPARTIDA ============== -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="index.html" class="nav__brand">
+        <span>CD Unión Isora</span>
+      </a>
+
+      <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+      <ul class="nav__menu">
+        <li><a href="index.html"        class="nav__link">Inicio</a></li>
+        <li><a href="historia.html"     class="nav__link">Historia</a></li>
+        <li><a href="abonados.html"     class="nav__link nav__link--active">Abonados</a></li>
+        <li><a href="partidos.html"     class="nav__link">Partidos</a></li>
+        <li><a href="alineaciones.html" class="nav__link">Alineaciones</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============== CABECERA ============== -->
+  <section class="page-header">
+    <div class="container">
+      <h1>Abónate al CD Unión Isora</h1>
+      <p>Forma parte de la afición que empuja al equipo cada partido</p>
+    </div>
+  </section>
+
+  <!-- ============== CONTENIDO ============== -->
+  <main>
+    <div class="container">
+
+      <section class="section">
+        <h2 class="section__title">Modalidades</h2>
+        <div class="grid grid--3">
+
+          <article class="card">
+            <h3>Adulto</h3>
+            <p style="font-size:2rem; color: var(--color-secondary); font-weight:700;">60 €</p>
+            <p>Acceso a todos los partidos de Liga como local en el campo municipal.</p>
+            <span class="badge">Temporada completa</span>
+          </article>
+
+          <article class="card">
+            <h3>Joven / Jubilado</h3>
+            <p style="font-size:2rem; color: var(--color-secondary); font-weight:700;">35 €</p>
+            <p>Modalidad reducida para menores de 18 años y mayores de 65 años.</p>
+            <span class="badge">Tarifa reducida</span>
+          </article>
+
+          <article class="card">
+            <h3>Familiar</h3>
+            <p style="font-size:2rem; color: var(--color-secondary); font-weight:700;">120 €</p>
+            <p>Dos adultos y hasta dos menores. La mejor opción para disfrutar en familia.</p>
+            <span class="badge">Pack familiar</span>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Ventajas del abonado</h2>
+        <div class="card">
+          <ul style="padding-left:1.25rem;">
+            <li>Entrada gratuita a todos los partidos de Liga como local.</li>
+            <li>Descuentos en la tienda oficial del club.</li>
+            <li>Acceso preferente a partidos de Copa y eventos especiales.</li>
+            <li>Invitación a la presentación oficial del equipo.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Formulario de alta</h2>
+        <div class="card">
+          <form>
+            <div style="display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+              <label>
+                Nombre completo
+                <input type="text" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px; margin-top:0.25rem;" />
+              </label>
+              <label>
+                DNI / NIE
+                <input type="text" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px; margin-top:0.25rem;" />
+              </label>
+              <label>
+                Email
+                <input type="email" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px; margin-top:0.25rem;" />
+              </label>
+              <label>
+                Teléfono
+                <input type="tel" style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px; margin-top:0.25rem;" />
+              </label>
+              <label>
+                Modalidad
+                <select required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px; margin-top:0.25rem;">
+                  <option value="">Selecciona...</option>
+                  <option>Adulto</option>
+                  <option>Joven / Jubilado</option>
+                  <option>Familiar</option>
+                </select>
+              </label>
+            </div>
+            <p style="margin-top:1.25rem;">
+              <button type="submit" class="btn">Enviar solicitud</button>
+            </p>
+          </form>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>CD Unión Isora</strong> · Guía de Isora, Tenerife</p>
+      <p>Contacto: <a href="mailto:info@cdunionisora.es">info@cdunionisora.es</a></p>
+      <p class="site-footer__bottom">© 2026 CD Unión Isora. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CD Unión Isora — Inicio</title>
+  <meta name="description" content="Web oficial del CD Unión Isora. Noticias, partidos, abonados e historia del club." />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============== HEADER + NAV COMPARTIDA ============== -->
+  <header class="site-header">
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="index.html" class="nav__brand">
+        <span>CD Unión Isora</span>
+      </a>
+
+      <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+      <ul class="nav__menu">
+        <li><a href="index.html"        class="nav__link nav__link--active">Inicio</a></li>
+        <li><a href="historia.html"     class="nav__link">Historia</a></li>
+        <li><a href="abonados.html"     class="nav__link">Abonados</a></li>
+        <li><a href="partidos.html"     class="nav__link">Partidos</a></li>
+        <li><a href="alineaciones.html" class="nav__link">Alineaciones</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============== HERO ============== -->
+  <section class="hero">
+    <div class="container">
+      <img src="img/logo-club.png" alt="Escudo CD Unión Isora" class="hero__logo" />
+      <h1>Bienvenidos al CD Unión Isora</h1>
+      <p>El club de fútbol del corazón de Isora. Pasión, cantera y tradición desde nuestra fundación.</p>
+      <p style="margin-top:1.5rem;">
+        <a href="abonados.html" class="btn">Hazte abonado</a>
+        <a href="partidos.html" class="btn btn--outline">Ver próximos partidos</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============== CONTENIDO ============== -->
+  <main>
+    <div class="container">
+
+      <!-- ============== FEDERACIÓN TINERFEÑA ============== -->
+      <section class="section">
+        <div class="fed-banner">
+          <h2 style="border:0; padding:0;">Partidos y resultados oficiales</h2>
+          <p>Toda la información actualizada en directo desde la <strong>Federación Interinsular Tinerfeña de Fútbol</strong>.</p>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="fed-card">
+            <div class="fed-card__icon">📅</div>
+            <h3>Próximos partidos</h3>
+            <p>Consulta el calendario completo del CD Unión Isora en la web oficial de la Federación.</p>
+            <a class="fed-card__link" href="https://futboltenerife.com/clubs/club-deportivo-union-isora" target="_blank" rel="noopener noreferrer">
+              Ver calendario
+            </a>
+          </article>
+
+          <article class="fed-card">
+            <div class="fed-card__icon">⚽</div>
+            <h3>Resultados</h3>
+            <p>Resultados de los últimos encuentros disputados por todos los equipos del club.</p>
+            <a class="fed-card__link" href="https://futboltenerife.com/clubs/club-deportivo-union-isora" target="_blank" rel="noopener noreferrer">
+              Ver resultados
+            </a>
+          </article>
+
+          <article class="fed-card">
+            <div class="fed-card__icon">🏆</div>
+            <h3>Clasificación</h3>
+            <p>Posición del equipo en su grupo y estadísticas detalladas de la temporada.</p>
+            <a class="fed-card__link" href="https://futboltenerife.com" target="_blank" rel="noopener noreferrer">
+              Ver clasificación
+            </a>
+          </article>
+        </div>
+
+        <p style="text-align:center; margin-top:1.5rem; color: var(--color-muted); font-size:0.9rem;">
+          Datos facilitados por <a href="https://futboltenerife.com" target="_blank" rel="noopener noreferrer">futboltenerife.com</a>
+        </p>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">Últimas novedades</h2>
+        <div class="grid grid--3">
+          <article class="card">
+            <h3>Pretemporada 2026/27</h3>
+            <p>Arranca la preparación con la incorporación de nuevos jugadores y un calendario de amistosos.</p>
+            <a href="partidos.html">Ver calendario →</a>
+          </article>
+          <article class="card">
+            <h3>Campaña de abonados</h3>
+            <p>Renueva o hazte nuevo abonado con descuentos especiales para socios y familias.</p>
+            <a href="abonados.html">Más información →</a>
+          </article>
+          <article class="card">
+            <h3>Nuestra historia</h3>
+            <p>Descubre el recorrido del club, sus hitos y los nombres que marcaron una época.</p>
+            <a href="historia.html">Leer historia →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section__title">El club en cifras</h2>
+        <div class="grid grid--3">
+          <div class="card" style="text-align:center;">
+            <h3 style="font-size:2.4rem; color: var(--color-secondary);">+50</h3>
+            <p>Años de historia</p>
+          </div>
+          <div class="card" style="text-align:center;">
+            <h3 style="font-size:2.4rem; color: var(--color-secondary);">12</h3>
+            <p>Equipos de cantera</p>
+          </div>
+          <div class="card" style="text-align:center;">
+            <h3 style="font-size:2.4rem; color: var(--color-secondary);">800+</h3>
+            <p>Abonados</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ============== FOOTER ============== -->
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>CD Unión Isora</strong> · Guía de Isora, Tenerife</p>
+      <p>Contacto: <a href="mailto:info@cdunionisora.es">info@cdunionisora.es</a></p>
+      <p class="site-footer__bottom">© 2026 CD Unión Isora. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
