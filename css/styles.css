@@ -1416,53 +1416,88 @@ main {
    ===================================================================== */
 
 .jugadores-grid--escudos {
-  background: #f6f8ff url('../img/fondo-escudos.png') center/280px repeat;
-  padding: 2rem 1.2rem;
+  background: #f6f8ff url('../img/fondo-escudos.png') center/800px repeat;
+  padding: 2.4rem 1.4rem;
+  /* Más separación entre tarjetas y rejilla con tarjetas más grandes y cuadradas */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem 1.4rem;
 }
 
+/* Tarjeta cuadrada para que la foto se vea entera */
 .jugadores-grid--escudos .jugador-card__foto-wrap {
-  width: 170px;
-  height: 200px;
-  border-radius: 14px;
+  width: 220px;
+  height: 220px;
+  border-radius: 18px;
   border: none;
   background: transparent;
   overflow: visible;
   box-shadow: none;
+  /* Animación de flotación constante (cada tarjeta tarda distinto = no van todas a la vez) */
+  animation: jugador-flotar 4.2s ease-in-out infinite;
+  transition: transform .25s ease;
+}
+.jugadores-grid--escudos .jugador-card:nth-child(odd) .jugador-card__foto-wrap {
+  animation-delay: .8s;
+  animation-duration: 4.8s;
+}
+.jugadores-grid--escudos .jugador-card:nth-child(3n) .jugador-card__foto-wrap {
+  animation-delay: 1.4s;
+  animation-duration: 5.2s;
 }
 .jugadores-grid--escudos .jugador-card__foto-wrap:hover {
-  transform: scale(1.05);
-  box-shadow: none;
+  transform: translateY(-10px) scale(1.06);
+  animation-play-state: paused; /* Para de flotar mientras estás encima */
 }
 .jugadores-grid--escudos .jugador-card__foto {
   width: 100%;
   height: 100%;
   object-fit: contain;
   object-position: bottom center;
-  filter: drop-shadow(0 6px 10px rgba(0,0,0,.25));
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,.30));
+  transition: filter .25s ease;
+}
+.jugadores-grid--escudos .jugador-card__foto-wrap:hover .jugador-card__foto {
+  filter: drop-shadow(0 14px 22px rgba(12,45,107,.45));
 }
 .jugadores-grid--escudos .jugador-card__foto-wrap--placeholder {
   background: rgba(12,45,107,.85);
-  border-radius: 14px;
+  border-radius: 18px;
 }
 .jugadores-grid--escudos .jugador-card__nombre {
-  margin-top: .5rem;
-  font-size: .98rem;
+  margin-top: .8rem;
+  font-size: 1.05rem;
   color: #0c2d6b;
-  text-shadow: 0 1px 0 rgba(255,255,255,.7);
-  max-width: 170px;
+  text-shadow: 0 1px 0 rgba(255,255,255,.85);
+  max-width: 220px;
+  font-weight: 700;
+}
+
+/* Animación de flotación */
+@keyframes jugador-flotar {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* Respetar usuarios que no quieren animaciones */
+@media (prefers-reduced-motion: reduce) {
+  .jugadores-grid--escudos .jugador-card__foto-wrap {
+    animation: none;
+  }
 }
 
 @media (max-width: 480px) {
   .jugadores-grid--escudos {
-    background-size: 200px;
-    padding: 1.4rem .8rem;
+    background-size: 520px;
+    padding: 1.6rem .8rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.4rem .8rem;
   }
   .jugadores-grid--escudos .jugador-card__foto-wrap {
-    width: 130px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
   }
   .jugadores-grid--escudos .jugador-card__nombre {
-    max-width: 130px;
-    font-size: .9rem;
+    max-width: 150px;
+    font-size: .92rem;
   }
 }
