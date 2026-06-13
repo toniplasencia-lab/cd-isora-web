@@ -168,7 +168,7 @@ p { margin-bottom: 1rem; }
 .hero {
   background: linear-gradient(135deg, var(--color-primary) 0%, #143a66 100%);
   color: var(--color-white);
-  padding: 1.5rem 1.25rem 1.75rem;
+  padding: 1.1rem 1.25rem 1.3rem;
   text-align: center;
 }
 
@@ -177,15 +177,36 @@ p { margin-bottom: 1rem; }
   padding-bottom: 0;
 }
 
+/* Variante con escudo a la izquierda y texto a la derecha */
+.hero--split {
+  text-align: left;
+}
+
+.hero--split .hero__inner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.hero--split .hero__content {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+
+.hero--split .hero__logo {
+  margin: 0;
+}
+
 .hero__logo {
   display: block;
   width: auto;
-  height: clamp(110px, 16vw, 140px);
-  max-width: 140px;
+  height: clamp(95px, 12vw, 115px);
+  max-width: 115px;
   object-fit: contain;
-  margin: 0 auto 0.6rem;
-  /* Hacemos el escudo blanco y muy nítido sobre el fondo azul */
-  filter: brightness(0) invert(1) drop-shadow(0 6px 18px rgba(0,0,0,0.35));
+  margin: 0 auto 0.5rem;
+  /* Hacemos el escudo blanco y nítido sobre el fondo azul */
+  filter: brightness(0) invert(1) drop-shadow(0 4px 12px rgba(0,0,0,0.3));
   animation: hero-logo-in 0.8s ease-out;
 }
 
@@ -196,26 +217,49 @@ p { margin-bottom: 1rem; }
 
 .hero h1 {
   color: var(--color-white);
-  margin-bottom: 0.5rem;
-  font-size: clamp(1.5rem, 3.2vw, 2rem);
+  margin-bottom: 0.35rem;
+  font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+  line-height: 1.2;
 }
 
 .hero p {
-  font-size: 0.98rem;
+  font-size: 0.95rem;
   max-width: 700px;
   margin: 0 auto;
-  opacity: 0.9;
+  opacity: 0.92;
 }
 
-.hero p:not(:last-child) { margin-bottom: 0.4rem; }
+.hero--split p {
+  margin: 0;
+  max-width: none;
+}
 
-.hero p[style*="margin-top"] {
-  margin-top: 0.9rem !important;
+.hero__actions {
+  margin-top: 0.7rem !important;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .hero .btn {
-  padding: 0.5rem 1.1rem;
-  font-size: 0.95rem;
+  padding: 0.45rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* En móviles muy estrechos vuelve al centrado vertical */
+@media (max-width: 480px) {
+  .hero--split {
+    text-align: center;
+  }
+  .hero--split .hero__inner {
+    justify-content: center;
+  }
+  .hero--split .hero__logo {
+    margin: 0 auto;
+  }
+  .hero__actions {
+    justify-content: center;
+  }
 }
 
 .page-header {
