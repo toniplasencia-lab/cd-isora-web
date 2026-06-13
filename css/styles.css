@@ -212,12 +212,12 @@ p { margin-bottom: 1rem; }
 .hero__logo {
   display: block;
   width: auto;
-  height: clamp(130px, 17vw, 170px);
-  max-width: 170px;
+  height: clamp(170px, 22vw, 220px);
+  max-width: 220px;
   object-fit: contain;
   margin: 0 auto 0.5rem;
   /* Hacemos el escudo blanco y nítido sobre el fondo azul */
-  filter: brightness(0) invert(1) drop-shadow(0 6px 16px rgba(0,0,0,0.35));
+  filter: brightness(0) invert(1) drop-shadow(0 6px 18px rgba(0,0,0,0.4));
   animation: hero-logo-in 0.8s ease-out;
 }
 
