@@ -30,6 +30,14 @@ Después de copiar las fotos aquí, edita el archivo:
   js/equipos-plantillas.js
 
 Y añade una línea por jugador dentro del bloque "cadete":
-  { foto: 'img/equipos/cadete/nombre-archivo.png', nombre: 'Nombre Apellido' },
+  { foto: 'img/equipos/cadete/IMAGEN1.png', nombre: 'José Manuel' },
+  { foto: 'img/equipos/cadete/IMAGEN2.png', nombre: 'Paul' },
+ { foto: 'img/equipos/cadete/IMAGEN3.png', nombre: 'José Manuel' },
+  { foto: 'img/equipos/cadete/IMAGEN4.png', nombre: 'Paul' },
+ { foto: 'img/equipos/cadete/IMAGEN5.png', nombre: 'José Manuel' },
+  { foto: 'img/equipos/cadete/IMAGEN6.png', nombre: 'Paul' },
+ { foto: 'img/equipos/cadete/IMAGEN7.png', nombre: 'José Manuel' },
+  { foto: 'img/equipos/cadete/IMAGEN8.png', nombre: 'Paul' },
+  { foto: 'img/equipos/cadete/IMAGEN9.png', nombre: 'Paul' },
 
 Recarga la web con Ctrl+F5 para ver los cambios.

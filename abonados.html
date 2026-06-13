@@ -4,9 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CD Unión Isora — Abonados</title>
-  <meta name="description" content="Campaña de abonados del CD Unión Isora. Modalidades, precios y formulario de alta." />
+  <meta name="description" content="Hazte abonado del CD Unión Isora. Descarga la hoja de inscripción y entrégala en las oficinas del club." />
   <link rel="stylesheet" href="css/styles.css" />
-</head>
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <!-- SEO -->
+  <meta name="author" content="Club Deportivo Unión Isora" />
+  <meta name="keywords" content="CD Unión Isora, fútbol Guía de Isora, club fútbol Tenerife, fútbol regional Canarias, Memorial Manuel Álvarez Varga" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#b8860b" />
+  <link rel="canonical" href="https://www.cdunionisora.es/" />
+  <!-- Open Graph (Facebook, WhatsApp) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CD Unión Isora" />
+  <meta property="og:title" content="Club Deportivo Unión Isora" />
+  <meta property="og:description" content="Web oficial del Club Deportivo Unión Isora. 94 años de fútbol en Guía de Isora, Tenerife." />
+  <meta property="og:image" content="https://www.cdunionisora.es/img/logo-club.png" />
+  <meta property="og:url" content="https://www.cdunionisora.es/" />
+  <meta property="og:locale" content="es_ES" />
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Club Deportivo Unión Isora" />
+  <meta name="twitter:description" content="Web oficial del Club Deportivo Unión Isora. 94 años de fútbol en Guía de Isora, Tenerife." />
+  <meta name="twitter:image" content="https://www.cdunionisora.es/img/logo-club.png" /></head>
 <body>
 
   <!-- ============== HEADER + NAV COMPARTIDA ============== -->
@@ -17,11 +41,11 @@
       <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
 
       <ul class="nav__menu">
-        <li><a href="index.html"        class="nav__link">Inicio</a></li>
-        <li><a href="historia.html"     class="nav__link">Historia</a></li>
-        <li><a href="abonados.html"     class="nav__link nav__link--active">Abonados</a></li>
-        <li><a href="partidos.html"     class="nav__link">Partidos</a></li>
-        <li><a href="equipos.html" class="nav__link">Equipos</a></li>
+        <li><a href="index.html"         class="nav__link">Inicio</a></li>
+        <li><a href="historia.html"      class="nav__link">Historia</a></li>
+        <li><a href="abonados.html"      class="nav__link nav__link--active">Abonados</a></li>
+        <li><a href="partidos.html"      class="nav__link">Partidos</a></li>
+        <li><a href="equipos.html"       class="nav__link">Equipos</a></li>
         <li><a href="colaboradores.html" class="nav__link">Colaboradores</a></li>
       </ul>
     </nav>
@@ -40,80 +64,24 @@
     <div class="container">
 
       <section class="section">
-        <h2 class="section__title">Modalidades</h2>
-        <div class="grid grid--3">
+        <div class="card" style="text-align:center; padding:2.5rem 1.5rem;">
+          <h2 class="section__title" style="margin-top:0;">Hazte abonado por solo 25 € al año</h2>
+          <p style="font-size:1.1rem; max-width:640px; margin:0 auto 1.5rem;">
+            Descarga la hoja de inscripción, rellénala con tus datos y
+            entrégala en <strong>las oficinas del club</strong> para
+            formalizar tu abono de la temporada.
+          </p>
 
-          <article class="card">
-            <h3>Adulto</h3>
-            <p style="font-size:2rem; color: var(--color-secondary); font-weight:700;">60 €</p>
-            <p>Acceso a todos los partidos de Liga como local en el campo municipal.</p>
-            <span class="badge">Temporada completa</span>
-          </article>
+          <p style="margin:1.5rem 0;">
+            <a href="docs/ficha-inscripcion.pdf" target="_blank" rel="noopener" class="btn">
+              📄 Descargar ficha de inscripción (PDF)
+            </a>
+          </p>
 
-          <article class="card">
-            <h3>Joven / Jubilado</h3>
-            <p style="font-size:2rem; color: var(--color-secondary); font-weight:700;">35 €</p>
-            <p>Modalidad reducida para menores de 18 años y mayores de 65 años.</p>
-            <span class="badge">Tarifa reducida</span>
-          </article>
-
-          <article class="card">
-            <h3>Familiar</h3>
-            <p style="font-size:2rem; color: var(--color-secondary); font-weight:700;">120 €</p>
-            <p>Dos adultos y hasta dos menores. La mejor opción para disfrutar en familia.</p>
-            <span class="badge">Pack familiar</span>
-          </article>
-
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section__title">Ventajas del abonado</h2>
-        <div class="card">
-          <ul style="padding-left:1.25rem;">
-            <li>Entrada gratuita a todos los partidos de Liga como local.</li>
-            <li>Descuentos en la tienda oficial del club.</li>
-            <li>Acceso preferente a partidos de Copa y eventos especiales.</li>
-            <li>Invitación a la presentación oficial del equipo.</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2 class="section__title">Formulario de alta</h2>
-        <div class="card">
-          <form>
-            <div style="display:grid; gap:1rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
-              <label>
-                Nombre completo
-                <input type="text" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px; margin-top:0.25rem;" />
-              </label>
-              <label>
-                DNI / NIE
-                <input type="text" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px; margin-top:0.25rem;" />
-              </label>
-              <label>
-                Email
-                <input type="email" required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px; margin-top:0.25rem;" />
-              </label>
-              <label>
-                Teléfono
-                <input type="tel" style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px; margin-top:0.25rem;" />
-              </label>
-              <label>
-                Modalidad
-                <select required style="width:100%; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px; margin-top:0.25rem;">
-                  <option value="">Selecciona...</option>
-                  <option>Adulto</option>
-                  <option>Joven / Jubilado</option>
-                  <option>Familiar</option>
-                </select>
-              </label>
-            </div>
-            <p style="margin-top:1.25rem;">
-              <button type="submit" class="btn">Enviar solicitud</button>
-            </p>
-          </form>
+          <p style="color: var(--color-muted); font-size:0.95rem; margin-top:1.5rem;">
+            ¿Tienes dudas? Escríbenos a
+            <a href="mailto:cdunionisora2019@gmail.com">cdunionisora2019@gmail.com</a>
+          </p>
         </div>
       </section>
 
@@ -124,7 +92,7 @@
   <footer class="site-footer">
     <div class="container">
       <p><strong>CD Unión Isora</strong> · Guía de Isora, Tenerife</p>
-      <p>Contacto: <a href="mailto:info@cdunionisora.es">info@cdunionisora.es</a></p>
+      <p>Contacto: <a href="mailto:cdunionisora2019@gmail.com">cdunionisora2019@gmail.com</a></p>
 
       <div class="site-footer__social" aria-label="Redes sociales del club">
         <a href="https://www.instagram.com/c.d.unionisora/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -135,10 +103,18 @@
         </a>
       </div>
 
+      <ul class="site-footer__legal">
+        <li><a href="aviso-legal.html">Aviso legal</a></li>
+        <li><a href="privacidad.html">Privacidad</a></li>
+        <li><a href="cookies.html">Cookies</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+      <p class="site-footer__cif">CIF G-38369989 · Avenida Isora, 7 · 38680 Guía de Isora</p>
       <p class="site-footer__bottom">© 2026 CD Unión Isora. Todos los derechos reservados.</p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/cookies.js"></script>
 </body>
 </html>

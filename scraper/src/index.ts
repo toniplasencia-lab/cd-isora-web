@@ -5,7 +5,7 @@ import type { Equipo, PartidoScrapeado } from './types.js';
 
 const DEBUG = process.env.DEBUG === '1';
 const NOMBRE_CLUB = 'Union Isora';
-const USER_AGENT = 'CD-Union-Isora-Bot/1.0 (+contacto: info@cdunionisora.es)';
+const USER_AGENT = 'CD-Union-Isora-Bot/1.0 (+contacto: cdunionisora2019@gmail.com)';
 
 function log(...args: unknown[]) {
   console.log('[scraper]', ...args);

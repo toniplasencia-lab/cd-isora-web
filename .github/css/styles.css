@@ -1325,3 +1325,472 @@ main {
     font-size: .85rem;
   }
 }
+
+
+/* ===========================================
+   PÁGINAS LEGALES (aviso-legal, privacidad, cookies, contacto)
+   =========================================== */
+
+.legal-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+}
+
+.legal-hero {
+  text-align: center;
+  padding: 2rem 1rem 1.5rem;
+  border-bottom: 3px solid var(--color-primario, #b8860b);
+  margin-bottom: 2rem;
+}
+
+.legal-hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  margin: 0 0 0.5rem;
+  color: var(--color-primario, #b8860b);
+}
+
+.legal-hero p {
+  margin: 0;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+.legal-content {
+  background: #fff;
+  padding: 1.5rem 1.25rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  line-height: 1.7;
+  color: #333;
+}
+
+.legal-content h2 {
+  color: var(--color-primario, #b8860b);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.4rem;
+}
+
+.legal-content h2:first-child {
+  margin-top: 0;
+}
+
+.legal-content p,
+.legal-content ul {
+  margin: 0.6rem 0;
+}
+
+.legal-content ul {
+  padding-left: 1.4rem;
+}
+
+.legal-content li {
+  margin-bottom: 0.4rem;
+}
+
+.legal-content a {
+  color: var(--color-primario, #b8860b);
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.legal-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.95rem;
+}
+
+.legal-table th,
+.legal-table td {
+  text-align: left;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #e5e5e5;
+  vertical-align: top;
+}
+
+.legal-table th {
+  background: #f7f5f0;
+  color: #444;
+  font-weight: 600;
+  width: 35%;
+}
+
+.legal-update {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+  font-style: italic;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+/* ===========================================
+   FOOTER LEGAL (enlaces a aviso, privacidad, cookies)
+   =========================================== */
+
+.site-footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+  margin: 0.5rem 0 0.75rem;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.site-footer__legal a {
+  color: #ddd;
+  text-decoration: none;
+}
+
+.site-footer__legal a:hover {
+  color: var(--color-primario, #b8860b);
+  text-decoration: underline;
+}
+
+.site-footer__cif {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #aaa;
+  margin: 0 0 0.5rem;
+}
+
+/* ===========================================
+   BANNER DE COOKIES
+   =========================================== */
+
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(20, 20, 20, 0.97);
+  color: #fff;
+  padding: 1rem 1.25rem;
+  z-index: 9999;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  animation: cookieSlideUp 0.4s ease-out;
+}
+
+@keyframes cookieSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.cookie-banner__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.cookie-banner__text {
+  margin: 0;
+  flex: 1 1 320px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.cookie-banner__text a {
+  color: var(--color-primario, #e2b853);
+  text-decoration: underline;
+}
+
+.cookie-banner__buttons {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.cookie-banner__btn {
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: transform 0.15s, opacity 0.15s;
+}
+
+.cookie-banner__btn:hover {
+  transform: translateY(-1px);
+}
+
+.cookie-banner__btn--accept {
+  background: var(--color-primario, #b8860b);
+  color: #fff;
+}
+
+.cookie-banner__btn--reject {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #888;
+}
+
+@media (max-width: 600px) {
+  .cookie-banner__inner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  .cookie-banner__buttons {
+    justify-content: center;
+  }
+}
+/* ===========================================
+   PRÓXIMO PARTIDO DESTACADO (página inicio)
+   =========================================== */
+
+.proximo-partido {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 1.5rem 1.25rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+
+.proximo-partido::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/fondo-escudos.png");
+  background-size: 280px;
+  background-repeat: repeat;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+.proximo-partido > * { position: relative; z-index: 1; }
+
+.proximo-partido__header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.proximo-partido__badge {
+  display: inline-block;
+  background: var(--color-secondary, #b8860b);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.proximo-partido__loading {
+  text-align: center;
+  color: #aaa;
+  font-style: italic;
+  padding: 2rem 0;
+  margin: 0;
+}
+
+.proximo-partido__empty {
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+.proximo-partido__empty p {
+  margin: 0.4rem 0;
+}
+
+.proximo-partido__empty-sub {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.proximo-partido__match {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.proximo-partido__team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.proximo-partido__team img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.proximo-partido__rival-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+}
+
+.proximo-partido__team span {
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.proximo-partido__vs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.proximo-partido__vs-label {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--color-secondary, #b8860b);
+  line-height: 1;
+}
+
+.proximo-partido__condicion {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+}
+
+.proximo-partido__info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.proximo-partido__info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.7rem 0.5rem;
+  border-radius: 8px;
+}
+
+.proximo-partido__info-label {
+  font-size: 0.75rem;
+  color: #bbb;
+  margin-bottom: 0.25rem;
+}
+
+.proximo-partido__info-value {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.proximo-partido__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.btn--sm {
+  padding: 0.5rem 0.95rem;
+  font-size: 0.88rem;
+}
+
+/* Móvil */
+@media (max-width: 600px) {
+  .proximo-partido__match {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .proximo-partido__vs { flex-direction: row; }
+  .proximo-partido__info { grid-template-columns: 1fr; }
+}
+
+/* ===========================================
+   LLAMADA A LA ACCIÓN FINAL (página inicio)
+   =========================================== */
+
+.cta-final {
+  background: linear-gradient(135deg, var(--color-secondary, #b8860b) 0%, #8b6508 100%);
+  color: #fff;
+  border-radius: 14px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-final::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("../img/fondo-escudos.png");
+  background-size: 320px;
+  background-repeat: repeat;
+  opacity: 0.10;
+  pointer-events: none;
+}
+
+.cta-final__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-final__title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin: 0 0 0.75rem;
+  color: #fff;
+}
+
+.cta-final__text {
+  font-size: 1.05rem;
+  margin: 0 0 1.5rem;
+  opacity: 0.95;
+}
+
+.cta-final__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.cta-final__buttons .btn {
+  background: #fff;
+  color: var(--color-secondary, #b8860b);
+  font-weight: 700;
+}
+
+.cta-final__buttons .btn:hover {
+  background: #f3f3f3;
+}
+
+.btn--whatsapp {
+  background: #25d366 !important;
+  color: #fff !important;
+}
+
+.btn--whatsapp:hover {
+  background: #1ebd5a !important;
+}

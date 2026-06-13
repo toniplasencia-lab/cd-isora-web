@@ -1,0 +1,14 @@
+# robots.txt - CD Unión Isora
+User-agent: *
+Allow: /
+
+# No indexar archivos internos
+Disallow: /scraper/
+Disallow: /.github/
+Disallow: /.vscode/
+Disallow: /servidor.ps1
+Disallow: /IniciarWebIsora.bat
+Disallow: /README.md
+
+# Sitemap
+Sitemap: https://www.cdunionisora.es/sitemap.xml

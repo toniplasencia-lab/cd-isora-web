@@ -1,4 +1,4 @@
-node_modules/
+gitnode_modules/
 dist/
 .env
 .env.local
