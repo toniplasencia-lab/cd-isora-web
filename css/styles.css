@@ -193,7 +193,7 @@ p { margin-bottom: 1rem; }
 .hero--split .hero__inner {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 2rem;
   flex-wrap: wrap;
 }
