@@ -176,7 +176,7 @@ p { margin-bottom: 1rem; }
 .hero {
   background: linear-gradient(135deg, var(--color-primary) 0%, #143a66 100%);
   color: var(--color-white);
-  padding: 0.9rem 1.25rem 1rem;
+  padding: 1.5rem 1.25rem 1.75rem;
   text-align: center;
 }
 
@@ -193,31 +193,31 @@ p { margin-bottom: 1rem; }
 .hero--split .hero__inner {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 2rem;
   flex-wrap: wrap;
-  /* Que el escudo se pegue al borde izquierdo del bloque azul */
-  padding-left: 0;
 }
 
 .hero--split .hero__content {
-  flex: 1 1 320px;
+  flex: 0 1 auto;
   min-width: 0;
+  max-width: 560px;
 }
 
 .hero--split .hero__logo {
   margin: 0;
-  margin-left: -0.5rem;
+  flex-shrink: 0;
 }
 
 .hero__logo {
   display: block;
   width: auto;
-  height: clamp(170px, 22vw, 220px);
-  max-width: 220px;
+  height: clamp(180px, 24vw, 260px);
+  max-width: 260px;
   object-fit: contain;
   margin: 0 auto 0.5rem;
   /* Hacemos el escudo blanco y nítido sobre el fondo azul */
-  filter: brightness(0) invert(1) drop-shadow(0 6px 18px rgba(0,0,0,0.4));
+  filter: brightness(0) invert(1) drop-shadow(0 8px 20px rgba(0,0,0,0.4));
   animation: hero-logo-in 0.8s ease-out;
 }
 
@@ -228,13 +228,13 @@ p { margin-bottom: 1rem; }
 
 .hero h1 {
   color: var(--color-white);
-  margin-bottom: 0.35rem;
-  font-size: clamp(1.35rem, 2.6vw, 1.7rem);
-  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  line-height: 1.15;
 }
 
 .hero p {
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   max-width: 700px;
   margin: 0 auto;
   opacity: 0.92;
@@ -246,15 +246,15 @@ p { margin-bottom: 1rem; }
 }
 
 .hero__actions {
-  margin-top: 0.7rem !important;
+  margin-top: 1rem !important;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.6rem;
   flex-wrap: wrap;
 }
 
 .hero .btn {
-  padding: 0.45rem 1rem;
-  font-size: 0.9rem;
+  padding: 0.65rem 1.4rem;
+  font-size: 1rem;
 }
 
 /* En móviles muy estrechos vuelve al centrado vertical */
