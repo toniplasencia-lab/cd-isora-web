@@ -1,0 +1,17 @@
+CARPETA: img/equipos/femenino/
+============================================
+
+Aquí van las fotos de los jugadores/jugadoras del equipo femenino.
+
+Recomendaciones:
+- Formato: .jpg o .webp
+- Tamaño ideal: 600 x 600 px (cuadrada)
+- Peso: por debajo de 300 KB por foto
+
+Después de copiar las fotos aquí, edita el archivo:
+  js/equipos-plantillas.js
+
+Y añade una línea por jugador dentro del bloque "femenino":
+  { foto: 'img/equipos/femenino/nombre-archivo.jpg', nombre: 'Nombre Apellido' },
+
+Recarga la web con Ctrl+F5 para ver los cambios.
