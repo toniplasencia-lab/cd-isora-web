@@ -130,3 +130,5 @@ sistema hotelero.
 - Solo se almacenan datos públicos disponibles en su web.
 - Si la federación cambia el HTML, el parser (`scraper/src/parser.ts`) está
   pensado para fallar de forma silenciosa por equipo sin romper la web.
+
+Proyecto movido a C:\Proyectos\ el 13/06/2026 para evitar conflictos con OneDrive.
