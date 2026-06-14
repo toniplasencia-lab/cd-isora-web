@@ -158,4 +158,26 @@ export function parseClasificacion(html: string, nombreClub: string): Clasificac
     const gf        = isNumero(frags[i + 7]!) ? parseInt(frags[i + 7]!) : null;
     const gc        = isNumero(frags[i + 8]!) ? parseInt(frags[i + 8]!) : null;
 
-    if ([puntos, jugados, ganados, empatados, perdidos, gf, gc].some(n
+    if ([puntos, jugados, ganados, empatados, perdidos, gf, gc].some(n => n === null)) {
+      i++;
+      continue;
+    }
+
+    filas.push({
+      posicion,
+      nombre_equipo: clean(nombre),
+      puntos: puntos!,
+      jugados: jugados!,
+      ganados: ganados!,
+      empatados: empatados!,
+      perdidos: perdidos!,
+      goles_favor: gf!,
+      goles_contra: gc!,
+      es_nuestro: clean(nombre).toLowerCase().includes(norm),
+    });
+
+    i += 9;
+  }
+
+  return filas;
+}
