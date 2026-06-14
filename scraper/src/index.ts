@@ -20,7 +20,7 @@ async function descargarHTML(url: string): Promise<string> {
     maxRedirections: 3,
   });
   if (res.statusCode >= 400) {
-    throw new Error(`HTTP ${res.statusCode} al descargar ${url}`);
+    throw new Error('HTTP ' + res.statusCode + ' al descargar ' + url);
   }
   return await res.body.text();
 }
@@ -38,7 +38,7 @@ async function leerEquiposActivos(): Promise<Equipo[]> {
 
 async function guardarPartidos(equipo: Equipo, partidos: PartidoScrapeado[]) {
   if (partidos.length === 0) {
-    log(`  (sin partidos parseados para ${equipo.nombre})`);
+    log('  (sin partidos parseados para ' + equipo.nombre + ')');
     return;
   }
 
@@ -60,16 +60,15 @@ async function guardarPartidos(equipo: Equipo, partidos: PartidoScrapeado[]) {
     .upsert(filas, { onConflict: 'equipo_id,uniq_key' });
 
   if (error) throw error;
-  log(`  ✓ ${partidos.length} partidos sincronizados`);
+  log('  OK ' + partidos.length + ' partidos sincronizados');
 }
 
 async function guardarClasificacion(equipo: Equipo, filas: ClasificacionScrapeada[]) {
   if (filas.length === 0) {
-    log(`  (sin clasificación parseada para ${equipo.nombre})`);
+    log('  (sin clasificacion parseada para ' + equipo.nombre + ')');
     return;
   }
 
-  // Borramos la clasificación anterior de este equipo y volvemos a insertar
   const { error: errDel } = await supabase
     .from('clasificacion')
     .delete()
@@ -93,41 +92,52 @@ async function guardarClasificacion(equipo: Equipo, filas: ClasificacionScrapead
 
   const { error } = await supabase.from('clasificacion').insert(datos);
   if (error) throw error;
-  log(`  ✓ ${filas.length} filas de clasificación sincronizadas`);
+  log('  OK ' + filas.length + ' filas de clasificacion sincronizadas');
 }
 
 async function main() {
   const inicio = Date.now();
-  log('Inicio · ' + new Date().toISOString());
+  log('Inicio ' + new Date().toISOString());
 
   const equipos = await leerEquiposActivos();
-  log(`Encontrados ${equipos.length} equipos activos en Supabase`);
+  log('Encontrados ' + equipos.length + ' equipos activos en Supabase');
 
   let totalOk = 0;
   let totalKo = 0;
 
   for (const eq of equipos) {
-    log(`→ ${eq.nombre} (${eq.competicion})`);
+    log('-> ' + eq.nombre + ' (' + eq.competicion + ')');
     try {
       const html = await descargarHTML(eq.url_federacion);
-      debug(`  HTML ${html.length} bytes`);
+      debug('  HTML ' + html.length + ' bytes');
 
-      // 1) Partidos
       const partidos = parsePartidos(html, NOMBRE_CLUB);
-      debug(`  Parseados ${partidos.length} partidos`);
+      debug('  Parseados ' + partidos.length + ' partidos');
       await guardarPartidos(eq, partidos);
 
-      // 2) Clasificación (no aborta si falla)
       try {
         const clasif = parseClasificacion(html, NOMBRE_CLUB);
-        debug(`  Parseadas ${clasif.length} filas de clasificación`);
+        debug('  Parseadas ' + clasif.length + ' filas de clasificacion');
         await guardarClasificacion(eq, clasif);
       } catch (eClasif) {
-        console.error(`  ⚠ Clasificación de ${eq.nombre} falló:`, (eClasif as Error).message);
+        console.error('  AVISO clasificacion de ' + eq.nombre + ' fallo: ' + (eClasif as Error).message);
       }
 
       totalOk++;
       await new Promise(r => setTimeout(r, 1000));
     } catch (e) {
       totalKo++;
-      console.error(`  ✗ Error con
+      console.error('  ERROR con ' + eq.nombre + ': ' + (e as Error).message);
+    }
+  }
+
+  const ms = Date.now() - inicio;
+  log('Fin ' + totalOk + ' OK, ' + totalKo + ' con error, ' + ms + ' ms');
+
+  if (totalKo > 0) process.exit(1);
+}
+
+main().catch(err => {
+  console.error('[fatal]', err);
+  process.exit(1);
+});
