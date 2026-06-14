@@ -1,21 +1,10 @@
 import * as cheerio from 'cheerio';
-import type { PartidoScrapeado } from './types.js';
+import type { PartidoScrapeado, ClasificacionScrapeada } from './types.js';
 
 /**
- * Parser del HTML de futboltenerife.com.
- *
- * La página de cada equipo contiene una sección que arranca con el texto
- * "TODOS LOS PARTIDOS DEL ..." y, a partir de ahí, los datos aparecen como
- * fragmentos planos en este orden por cada partido:
- *
- *   fecha · hora · jornada · LOCAL · [goles_L · goles_V] · VISITANTE
- *
- * Cuando el partido aún no se ha jugado, los goles no aparecen y queda:
- *
- *   fecha · hora · jornada · LOCAL · VISITANTE
- *
- * Esto se debe a que los <div> de la web tienen anchos relativos pero no
- * llevan clases identificativas, así que usamos esta secuencia como contrato.
+ * ============================================================================
+ *  PARSER DE PARTIDOS (sin cambios respecto a la versión anterior)
+ * ============================================================================
  */
 
 const FECHA_RE = /^(\d{2})-(\d{2})-(\d{4})$/;
@@ -44,10 +33,6 @@ function slug(s: string): string {
     .replace(/^-|-$/g, '');
 }
 
-/**
- * Extrae los fragmentos de texto en orden desde la sección
- * "TODOS LOS PARTIDOS DEL ...".
- */
 function extraerFragmentos(html: string): string[] {
   const $ = cheerio.load(html);
 
@@ -63,14 +48,10 @@ function extraerFragmentos(html: string): string[] {
     if (t) fragmentos.push(t);
   });
 
-  // Descartar todo lo anterior a "TODOS LOS PARTIDOS DEL"
   const idx = fragmentos.findIndex(f => f.includes('TODOS LOS PARTIDOS DEL'));
   return idx >= 0 ? fragmentos.slice(idx + 1) : fragmentos;
 }
 
-/**
- * Convierte la lista plana de fragmentos en partidos estructurados.
- */
 export function parsePartidos(html: string, nombreClub: string): PartidoScrapeado[] {
   const frags = extraerFragmentos(html);
   const partidos: PartidoScrapeado[] = [];
@@ -79,13 +60,11 @@ export function parsePartidos(html: string, nombreClub: string): PartidoScrapead
   while (i < frags.length) {
     const f = frags[i]!;
 
-    // Buscar el inicio de un partido: una FECHA
     if (!isFecha(f)) {
       i++;
       continue;
     }
 
-    // Patrón mínimo necesario: fecha, hora, jornada, local, ..., visitante
     if (i + 4 >= frags.length) break;
 
     const fecha = toIsoDate(f);
@@ -104,14 +83,12 @@ export function parsePartidos(html: string, nombreClub: string): PartidoScrapead
     let golesVisitante: number | null = null;
     let nextIndex: number;
 
-    // ¿Hay goles? → siguientes 2 fragmentos son numéricos y luego visitante
     if (i + 6 < frags.length && isNumero(frags[i + 4]!) && isNumero(frags[i + 5]!)) {
       golesLocal = parseInt(frags[i + 4]!);
       golesVisitante = parseInt(frags[i + 5]!);
       visitante = frags[i + 6]!;
       nextIndex = i + 7;
     } else {
-      // Partido sin jugar todavía
       visitante = frags[i + 4]!;
       nextIndex = i + 5;
     }
@@ -130,10 +107,76 @@ export function parsePartidos(html: string, nombreClub: string): PartidoScrapead
     i = nextIndex;
   }
 
-  // Sanity check: solo conservar partidos que involucren a nuestro club
   const norm = nombreClub.toLowerCase();
   return partidos.filter(p =>
     p.local.toLowerCase().includes(norm) ||
     p.visitante.toLowerCase().includes(norm)
   );
 }
+
+/**
+ * ============================================================================
+ *  PARSER DE CLASIFICACIÓN (nuevo)
+ *
+ *  La página de estadísticas de futboltenerife.com contiene una tabla con la
+ *  clasificación. Los datos aparecen como fragmentos planos en este orden por
+ *  cada fila:
+ *
+ *    posicion · nombre_equipo · puntos · jugados · ganados · empatados ·
+ *    perdidos · goles_favor · goles_contra
+ *
+ *  Se localiza usando como ancla el texto "CLASIFICACIÓN" o "CLASIFICACION".
+ * ============================================================================
+ */
+
+function extraerFragmentosClasificacion(html: string): string[] {
+  const $ = cheerio.load(html);
+
+  const ancla = $('div').filter((_, el) => {
+    const t = $(el).text().toUpperCase();
+    return t.includes('CLASIFICACIÓN') || t.includes('CLASIFICACION');
+  }).first();
+
+  const root = ancla.length ? ancla.parent() : $('body');
+
+  const fragmentos: string[] = [];
+  root.find('div').each((_, el) => {
+    const t = clean($(el).clone().children().remove().end().text());
+    if (t) fragmentos.push(t);
+  });
+
+  const idx = fragmentos.findIndex(f =>
+    f.toUpperCase().includes('CLASIFICACIÓN') || f.toUpperCase().includes('CLASIFICACION')
+  );
+  return idx >= 0 ? fragmentos.slice(idx + 1) : fragmentos;
+}
+
+export function parseClasificacion(html: string, nombreClub: string): ClasificacionScrapeada[] {
+  const frags = extraerFragmentosClasificacion(html);
+  const filas: ClasificacionScrapeada[] = [];
+  const norm = nombreClub.toLowerCase();
+
+  let i = 0;
+  while (i < frags.length) {
+    const f = frags[i]!;
+
+    // Buscar inicio de fila: una POSICION (número entre 1 y 30)
+    if (!isNumero(f)) {
+      i++;
+      continue;
+    }
+    const posicion = parseInt(f);
+    if (posicion < 1 || posicion > 30) {
+      i++;
+      continue;
+    }
+
+    // Patrón: pos · nombre · puntos · jugados · ganados · empatados · perdidos · gf · gc
+    if (i + 8 >= frags.length) break;
+
+    const nombre = frags[i + 1]!;
+    const puntos    = isNumero(frags[i + 2]!) ? parseInt(frags[i + 2]!) : null;
+    const jugados   = isNumero(frags[i + 3]!) ? parseInt(frags[i + 3]!) : null;
+    const ganados   = isNumero(frags[i + 4]!) ? parseInt(frags[i + 4]!) : null;
+    const empatados = isNumero(frags[i + 5]!) ? parseInt(frags[i + 5]!) : null;
+    const perdidos  = isNumero(frags[i + 6]!) ? parseInt(frags[i + 6]!) :
