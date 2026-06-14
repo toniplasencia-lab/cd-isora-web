@@ -37,3 +37,4 @@ export interface ClasificacionScrapeada {
   goles_contra: number;
   es_nuestro: boolean;
 }
+
