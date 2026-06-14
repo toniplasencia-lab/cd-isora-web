@@ -9,6 +9,7 @@ export interface Equipo {
   categoria: string;
   competicion: string;
   url_federacion: string;
+  url_clasificacion: string | null;
   orden: number;
   activo: boolean;
 }
@@ -37,4 +38,3 @@ export interface ClasificacionScrapeada {
   goles_contra: number;
   es_nuestro: boolean;
 }
-
