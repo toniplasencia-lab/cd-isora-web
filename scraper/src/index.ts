@@ -1,7 +1,7 @@
 import { request } from 'undici';
 import { supabase } from './supabase.js';
-import { parsePartidos } from './parser.js';
-import type { Equipo, PartidoScrapeado } from './types.js';
+import { parsePartidos, parseClasificacion } from './parser.js';
+import type { Equipo, PartidoScrapeado, ClasificacionScrapeada } from './types.js';
 
 const DEBUG = process.env.DEBUG === '1';
 const NOMBRE_CLUB = 'Union Isora';
@@ -14,9 +14,6 @@ function debug(...args: unknown[]) {
   if (DEBUG) console.log('[debug]', ...args);
 }
 
-/**
- * Descarga el HTML de la federación para un equipo concreto.
- */
 async function descargarHTML(url: string): Promise<string> {
   const res = await request(url, {
     headers: { 'user-agent': USER_AGENT },
@@ -28,9 +25,6 @@ async function descargarHTML(url: string): Promise<string> {
   return await res.body.text();
 }
 
-/**
- * Lee los equipos activos desde Supabase.
- */
 async function leerEquiposActivos(): Promise<Equipo[]> {
   const { data, error } = await supabase
     .from('equipos')
@@ -42,9 +36,6 @@ async function leerEquiposActivos(): Promise<Equipo[]> {
   return (data ?? []) as Equipo[];
 }
 
-/**
- * Hace upsert de los partidos de un equipo, evitando duplicados por uniq_key.
- */
 async function guardarPartidos(equipo: Equipo, partidos: PartidoScrapeado[]) {
   if (partidos.length === 0) {
     log(`  (sin partidos parseados para ${equipo.nombre})`);
@@ -72,9 +63,39 @@ async function guardarPartidos(equipo: Equipo, partidos: PartidoScrapeado[]) {
   log(`  ✓ ${partidos.length} partidos sincronizados`);
 }
 
-/**
- * Punto de entrada.
- */
+async function guardarClasificacion(equipo: Equipo, filas: ClasificacionScrapeada[]) {
+  if (filas.length === 0) {
+    log(`  (sin clasificación parseada para ${equipo.nombre})`);
+    return;
+  }
+
+  // Borramos la clasificación anterior de este equipo y volvemos a insertar
+  const { error: errDel } = await supabase
+    .from('clasificacion')
+    .delete()
+    .eq('equipo_id', equipo.id);
+  if (errDel) throw errDel;
+
+  const datos = filas.map(f => ({
+    equipo_id: equipo.id,
+    posicion: f.posicion,
+    nombre_equipo: f.nombre_equipo,
+    puntos: f.puntos,
+    jugados: f.jugados,
+    ganados: f.ganados,
+    empatados: f.empatados,
+    perdidos: f.perdidos,
+    goles_favor: f.goles_favor,
+    goles_contra: f.goles_contra,
+    es_nuestro: f.es_nuestro,
+    updated_at: new Date().toISOString(),
+  }));
+
+  const { error } = await supabase.from('clasificacion').insert(datos);
+  if (error) throw error;
+  log(`  ✓ ${filas.length} filas de clasificación sincronizadas`);
+}
+
 async function main() {
   const inicio = Date.now();
   log('Inicio · ' + new Date().toISOString());
@@ -90,25 +111,23 @@ async function main() {
     try {
       const html = await descargarHTML(eq.url_federacion);
       debug(`  HTML ${html.length} bytes`);
+
+      // 1) Partidos
       const partidos = parsePartidos(html, NOMBRE_CLUB);
       debug(`  Parseados ${partidos.length} partidos`);
       await guardarPartidos(eq, partidos);
+
+      // 2) Clasificación (no aborta si falla)
+      try {
+        const clasif = parseClasificacion(html, NOMBRE_CLUB);
+        debug(`  Parseadas ${clasif.length} filas de clasificación`);
+        await guardarClasificacion(eq, clasif);
+      } catch (eClasif) {
+        console.error(`  ⚠ Clasificación de ${eq.nombre} falló:`, (eClasif as Error).message);
+      }
+
       totalOk++;
-      // pausa cortés para no martillear la web
       await new Promise(r => setTimeout(r, 1000));
     } catch (e) {
       totalKo++;
-      console.error(`  ✗ Error con ${eq.nombre}:`, (e as Error).message);
-    }
-  }
-
-  const ms = Date.now() - inicio;
-  log(`Fin · ${totalOk} OK · ${totalKo} con error · ${ms} ms`);
-
-  if (totalKo > 0) process.exit(1);
-}
-
-main().catch(err => {
-  console.error('[fatal]', err);
-  process.exit(1);
-});
+      console.error(`  ✗ Error con
