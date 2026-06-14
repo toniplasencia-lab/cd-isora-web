@@ -95,6 +95,26 @@ async function guardarClasificacion(equipo: Equipo, filas: ClasificacionScrapead
   log('  OK ' + filas.length + ' filas de clasificacion sincronizadas');
 }
 
+async function procesarPartidos(eq: Equipo) {
+  const html = await descargarHTML(eq.url_federacion);
+  debug('  HTML partidos ' + html.length + ' bytes');
+  const partidos = parsePartidos(html, NOMBRE_CLUB);
+  debug('  Parseados ' + partidos.length + ' partidos');
+  await guardarPartidos(eq, partidos);
+}
+
+async function procesarClasificacion(eq: Equipo) {
+  if (!eq.url_clasificacion) {
+    log('  (equipo sin url_clasificacion, salto)');
+    return;
+  }
+  const html = await descargarHTML(eq.url_clasificacion);
+  debug('  HTML clasificacion ' + html.length + ' bytes');
+  const clasif = parseClasificacion(html, NOMBRE_CLUB);
+  debug('  Parseadas ' + clasif.length + ' filas de clasificacion');
+  await guardarClasificacion(eq, clasif);
+}
+
 async function main() {
   const inicio = Date.now();
   log('Inicio ' + new Date().toISOString());
@@ -107,28 +127,25 @@ async function main() {
 
   for (const eq of equipos) {
     log('-> ' + eq.nombre + ' (' + eq.competicion + ')');
+
+    // Partidos (critico: si falla, marcamos error)
     try {
-      const html = await descargarHTML(eq.url_federacion);
-      debug('  HTML ' + html.length + ' bytes');
-
-      const partidos = parsePartidos(html, NOMBRE_CLUB);
-      debug('  Parseados ' + partidos.length + ' partidos');
-      await guardarPartidos(eq, partidos);
-
-      try {
-        const clasif = parseClasificacion(html, NOMBRE_CLUB);
-        debug('  Parseadas ' + clasif.length + ' filas de clasificacion');
-        await guardarClasificacion(eq, clasif);
-      } catch (eClasif) {
-        console.error('  AVISO clasificacion de ' + eq.nombre + ' fallo: ' + (eClasif as Error).message);
-      }
-
-      totalOk++;
-      await new Promise(r => setTimeout(r, 1000));
+      await procesarPartidos(eq);
     } catch (e) {
       totalKo++;
-      console.error('  ERROR con ' + eq.nombre + ': ' + (e as Error).message);
+      console.error('  ERROR partidos ' + eq.nombre + ': ' + (e as Error).message);
+      continue;
     }
+
+    // Clasificacion (no critico: si falla, solo avisamos)
+    try {
+      await procesarClasificacion(eq);
+    } catch (e) {
+      console.error('  AVISO clasificacion ' + eq.nombre + ': ' + (e as Error).message);
+    }
+
+    totalOk++;
+    await new Promise(r => setTimeout(r, 1000));
   }
 
   const ms = Date.now() - inicio;
