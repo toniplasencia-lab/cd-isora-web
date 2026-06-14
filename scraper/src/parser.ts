@@ -1,12 +1,6 @@
 import * as cheerio from 'cheerio';
 import type { PartidoScrapeado, ClasificacionScrapeada } from './types.js';
 
-/**
- * ============================================================================
- *  PARSER DE PARTIDOS (sin cambios respecto a la versión anterior)
- * ============================================================================
- */
-
 const FECHA_RE = /^(\d{2})-(\d{2})-(\d{4})$/;
 const HORA_RE  = /^\d{1,2}:\d{2}$/;
 const NUM_RE   = /^\d{1,2}$/;
@@ -17,7 +11,7 @@ function isNumero(s: string)  { return NUM_RE.test(s); }
 
 function toIsoDate(raw: string): string {
   const m = raw.match(FECHA_RE)!;
-  return `${m[3]}-${m[2]}-${m[1]}`;
+  return m[3] + '-' + m[2] + '-' + m[1];
 }
 
 function clean(s: string): string {
@@ -101,7 +95,7 @@ export function parsePartidos(html: string, nombreClub: string): PartidoScrapead
       visitante: clean(visitante),
       goles_local: golesLocal,
       goles_visitante: golesVisitante,
-      uniq_key: `${jornada}-${fecha}-${slug(local)}-${slug(visitante)}`,
+      uniq_key: jornada + '-' + fecha + '-' + slug(local) + '-' + slug(visitante),
     });
 
     i = nextIndex;
@@ -114,27 +108,12 @@ export function parsePartidos(html: string, nombreClub: string): PartidoScrapead
   );
 }
 
-/**
- * ============================================================================
- *  PARSER DE CLASIFICACIÓN (nuevo)
- *
- *  La página de estadísticas de futboltenerife.com contiene una tabla con la
- *  clasificación. Los datos aparecen como fragmentos planos en este orden por
- *  cada fila:
- *
- *    posicion · nombre_equipo · puntos · jugados · ganados · empatados ·
- *    perdidos · goles_favor · goles_contra
- *
- *  Se localiza usando como ancla el texto "CLASIFICACIÓN" o "CLASIFICACION".
- * ============================================================================
- */
-
 function extraerFragmentosClasificacion(html: string): string[] {
   const $ = cheerio.load(html);
 
   const ancla = $('div').filter((_, el) => {
     const t = $(el).text().toUpperCase();
-    return t.includes('CLASIFICACIÓN') || t.includes('CLASIFICACION');
+    return t.includes('CLASIFICACION');
   }).first();
 
   const root = ancla.length ? ancla.parent() : $('body');
@@ -145,9 +124,7 @@ function extraerFragmentosClasificacion(html: string): string[] {
     if (t) fragmentos.push(t);
   });
 
-  const idx = fragmentos.findIndex(f =>
-    f.toUpperCase().includes('CLASIFICACIÓN') || f.toUpperCase().includes('CLASIFICACION')
-  );
+  const idx = fragmentos.findIndex(f => f.toUpperCase().includes('CLASIFICACION'));
   return idx >= 0 ? fragmentos.slice(idx + 1) : fragmentos;
 }
 
@@ -160,7 +137,6 @@ export function parseClasificacion(html: string, nombreClub: string): Clasificac
   while (i < frags.length) {
     const f = frags[i]!;
 
-    // Buscar inicio de fila: una POSICION (número entre 1 y 30)
     if (!isNumero(f)) {
       i++;
       continue;
@@ -171,7 +147,6 @@ export function parseClasificacion(html: string, nombreClub: string): Clasificac
       continue;
     }
 
-    // Patrón: pos · nombre · puntos · jugados · ganados · empatados · perdidos · gf · gc
     if (i + 8 >= frags.length) break;
 
     const nombre = frags[i + 1]!;
@@ -179,4 +154,8 @@ export function parseClasificacion(html: string, nombreClub: string): Clasificac
     const jugados   = isNumero(frags[i + 3]!) ? parseInt(frags[i + 3]!) : null;
     const ganados   = isNumero(frags[i + 4]!) ? parseInt(frags[i + 4]!) : null;
     const empatados = isNumero(frags[i + 5]!) ? parseInt(frags[i + 5]!) : null;
-    const perdidos  = isNumero(frags[i + 6]!) ? parseInt(frags[i + 6]!) :
+    const perdidos  = isNumero(frags[i + 6]!) ? parseInt(frags[i + 6]!) : null;
+    const gf        = isNumero(frags[i + 7]!) ? parseInt(frags[i + 7]!) : null;
+    const gc        = isNumero(frags[i + 8]!) ? parseInt(frags[i + 8]!) : null;
+
+    if ([puntos, jugados, ganados, empatados, perdidos, gf, gc].some(n
