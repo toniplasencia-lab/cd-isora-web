@@ -24,3 +24,16 @@ export interface PartidoScrapeado {
   /** Clave para detectar duplicados al hacer upsert */
   uniq_key: string;
 }
+
+export interface ClasificacionScrapeada {
+  posicion: number;
+  nombre_equipo: string;
+  puntos: number;
+  jugados: number;
+  ganados: number;
+  empatados: number;
+  perdidos: number;
+  goles_favor: number;
+  goles_contra: number;
+  es_nuestro: boolean;
+}
