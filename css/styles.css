@@ -548,8 +548,8 @@ main {
 
 .logos-marquee__item {
   flex: 0 0 auto;
-  width: 160px;
-  height: 110px;
+  width: 240px;
+  height: 165px;
   display: grid;
   place-items: center;
   background: var(--color-white);
@@ -568,9 +568,9 @@ main {
 }
 
 .logos-marquee__item img {
-  /* Todos los logos ocupan el mismo área visual (caja 144x94) */
+  /* Todos los logos ocupan el mismo área visual (caja 224x150) */
   max-width: 100%;
-  max-height: 94px;
+  max-height: 150px;
   width: auto;
   height: auto;
   object-fit: contain;
