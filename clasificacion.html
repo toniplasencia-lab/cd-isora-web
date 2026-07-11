@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CD Unión Isora — Tienda</title>
-  <meta name="description" content="Tienda oficial del CD Unión Isora. Camisetas, bufandas y productos del club." />
+  <title>CD Unión Isora — Clasificación</title>
+  <meta name="description" content="Clasificación actualizada de las ligas en las que compite el CD Unión Isora, sincronizada desde la Federación Tinerfeña." />
   <link rel="stylesheet" href="css/styles.css" />
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -14,74 +14,118 @@
   <link rel="manifest" href="site.webmanifest" />
   <!-- SEO -->
   <meta name="author" content="Club Deportivo Unión Isora" />
-  <meta name="keywords" content="CD Unión Isora, fútbol Guía de Isora, club fútbol Tenerife, fútbol regional Canarias, Memorial Manuel Álvarez Varga" />
+  <meta name="keywords" content="CD Unión Isora, clasificación regional Tenerife, tabla liga fútbol Tenerife, Regional Segunda G2, Cadete Primera G6" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#b8860b" />
-  <link rel="canonical" href="https://www.cdunionisora.es/" />
-  <!-- Open Graph (Facebook, WhatsApp) -->
+  <link rel="canonical" href="https://www.cdunionisora.es/clasificacion.html" />
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="CD Unión Isora" />
-  <meta property="og:title" content="Club Deportivo Unión Isora" />
-  <meta property="og:description" content="Web oficial del Club Deportivo Unión Isora. 94 años de fútbol en Guía de Isora, Tenerife." />
+  <meta property="og:title" content="Clasificación · CD Unión Isora" />
+  <meta property="og:description" content="Posición y estadísticas del CD Unión Isora en sus competiciones oficiales." />
   <meta property="og:image" content="https://www.cdunionisora.es/img/logo-club.png" />
-  <meta property="og:url" content="https://www.cdunionisora.es/" />
+  <meta property="og:url" content="https://www.cdunionisora.es/clasificacion.html" />
   <meta property="og:locale" content="es_ES" />
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Club Deportivo Unión Isora" />
-  <meta name="twitter:description" content="Web oficial del Club Deportivo Unión Isora. 94 años de fútbol en Guía de Isora, Tenerife." />
-  <meta name="twitter:image" content="https://www.cdunionisora.es/img/logo-club.png" /></head>
+  <meta name="twitter:title" content="Clasificación · CD Unión Isora" />
+  <meta name="twitter:description" content="Posición y estadísticas del CD Unión Isora en sus competiciones oficiales." />
+  <meta name="twitter:image" content="https://www.cdunionisora.es/img/logo-club.png" />
+</head>
 <body>
 
+
+  <!-- ============== HEADER + NAV COMPARTIDA ============== -->
   <header class="site-header">
     <nav class="nav" aria-label="Navegación principal">
       <a href="index.html" class="nav__brand" aria-label="Inicio"></a>
+
+
       <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+
       <ul class="nav__menu">
-        <li><a href="index.html"         class="nav__link">Inicio</a></li>
-        <li><a href="historia.html"      class="nav__link">Historia</a></li>
-        <li><a href="abonados.html"      class="nav__link">Abonados</a></li>
-        <li><a href="partidos.html"      class="nav__link">Partidos</a></li>
-        <li><a href="clasificacion.html" class="nav__link">Clasificación</a></li>
-        <li><a href="equipos.html"       class="nav__link">Equipos</a></li>
-        <li><a href="tienda.html"        class="nav__link nav__link--active">Tienda</a></li>
+        <li><a href="index.html"        class="nav__link">Inicio</a></li>
+        <li><a href="historia.html"     class="nav__link">Historia</a></li>
+        <li><a href="abonados.html"     class="nav__link">Abonados</a></li>
+        <li><a href="partidos.html"     class="nav__link">Partidos</a></li>
+        <li><a href="clasificacion.html" class="nav__link nav__link--active">Clasificación</a></li>
+        <li><a href="equipos.html"      class="nav__link">Equipos</a></li>
+        <li><a href="tienda.html"       class="nav__link">Tienda</a></li>
         <li><a href="colaboradores.html" class="nav__link">Colaboradores</a></li>
       </ul>
     </nav>
   </header>
 
+
+  <!-- ============== CABECERA ============== -->
   <section class="page-header">
     <div class="container">
-      <h1>Tienda del CD Unión Isora</h1>
-      <p>Viste los colores del club</p>
+      <h1>Clasificación</h1>
+      <p>Datos sincronizados cada 6 horas desde la Federación Tinerfeña</p>
     </div>
   </section>
 
+
+  <!-- ============== CONTENIDO ============== -->
   <main>
     <div class="container">
 
-      <section class="section">
-        <div class="card" style="text-align:center; padding:1.5rem;">
-          <p style="margin:0;">
-            ¿Te interesa algún producto? Escríbenos por <strong>WhatsApp</strong>,
-            <strong>Instagram</strong>, <strong>Facebook Messenger</strong> o
-            <strong>email</strong> y te decimos disponibilidad y forma de pago.
-          </p>
-        </div>
 
-        <h2 class="section__title" style="margin-top:2rem;">Productos</h2>
-        <div id="tienda-productos" class="grid grid--3">
-          <!-- Los productos se cargan desde js/tienda.js -->
+      <!-- Filtro por equipo -->
+      <section class="section">
+        <div class="card" style="display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
+          <label for="filtro-clasif" style="font-weight:600;">Ver clasificación de:</label>
+          <select id="filtro-clasif" style="flex:1; min-width:240px; padding:0.6rem; border:1px solid var(--color-border); border-radius:6px;">
+            <option value="">Cargando equipos...</option>
+          </select>
         </div>
       </section>
+
+
+      <!-- Tabla -->
+      <section class="section">
+        <h2 class="section__title" id="titulo-clasif">Clasificación</h2>
+        <div class="table-wrapper">
+          <table class="table table-clasificacion" id="tbl-clasif">
+            <thead>
+              <tr>
+                <th class="col-pos">Pos</th>
+                <th>Equipo</th>
+                <th title="Puntos">Pts</th>
+                <th title="Partidos jugados" class="col-extra">PJ</th>
+                <th title="Partidos ganados" class="col-extra">PG</th>
+                <th title="Partidos empatados" class="col-extra">PE</th>
+                <th title="Partidos perdidos" class="col-extra">PP</th>
+                <th title="Goles a favor" class="col-extra">GF</th>
+                <th title="Goles en contra" class="col-extra">GC</th>
+                <th title="Diferencia de goles" class="col-extra">DG</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="10" style="text-align:center; color:var(--color-muted);">Cargando...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="last-update" style="text-align:right; font-size:0.85rem; color:var(--color-muted); margin-top:0.5rem;"></p>
+      </section>
+
+
+      <p style="text-align:center; margin-top:1rem; color:var(--color-muted); font-size:0.9rem;">
+        Fuente oficial: <a href="https://ftf.es" target="_blank" rel="noopener noreferrer">Federación Interinsular Tinerfeña de Fútbol (ftf.es)</a>
+      </p>
+
 
     </div>
   </main>
 
+
+  <!-- ============== FOOTER ============== -->
   <footer class="site-footer">
     <div class="container">
       <p><strong>CD Unión Isora</strong> · Guía de Isora, Tenerife</p>
       <p>Contacto: <a href="mailto:cdunionisora2019@gmail.com">cdunionisora2019@gmail.com</a></p>
+
 
       <div class="site-footer__social" aria-label="Redes sociales del club">
         <a href="https://www.instagram.com/c.d.unionisora/" target="_blank" rel="noopener" aria-label="Instagram">
@@ -91,6 +135,7 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.99 3.66 9.13 8.44 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.45 2.89h-2.33v6.99C18.34 21.13 22 16.99 22 12z"/></svg>
         </a>
       </div>
+
 
       <ul class="site-footer__legal">
         <li><a href="aviso-legal.html">Aviso legal</a></li>
@@ -102,15 +147,13 @@
       <p class="site-footer__bottom">© 2026 CD Unión Isora. Todos los derechos reservados.</p>
     </div>
   </footer>
-  <!-- ============== LIGHTBOX (foto grande) ============== -->
-  <div id="tienda-lightbox" class="lightbox" aria-hidden="true" role="dialog">
-    <button class="lightbox__close" aria-label="Cerrar">&times;</button>
-    <img class="lightbox__img" src="" alt="" />
-  </div>
-  
+
+
+  <!-- Cliente de Supabase por CDN, config y lógica de clasificación -->
+  <script src="js/supabase.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/clasificacion.js"></script>
   <script src="js/main.js"></script>
   <script src="js/cookies.js"></script>
-  <script src="js/tienda.js"></script>
-  <script src="js/tienda-render.js"></script>
 </body>
 </html>

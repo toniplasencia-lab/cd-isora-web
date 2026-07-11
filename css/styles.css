@@ -1647,3 +1647,68 @@ main {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
+/* ============================================================================
+   Tabla de clasificación
+   ============================================================================ */
+
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 8px;
+}
+
+.table-clasificacion th,
+.table-clasificacion td {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Columna nombre alineada a la izquierda */
+.table-clasificacion th:nth-child(2),
+.table-clasificacion td:nth-child(2) {
+  text-align: left;
+  white-space: normal;
+}
+
+.table-clasificacion .col-pos {
+  width: 3rem;
+}
+
+/* Resaltado de la fila de nuestro equipo */
+.table-clasificacion .fila-nuestra {
+  background: rgba(184, 134, 11, 0.12);
+  font-weight: 600;
+}
+
+.table-clasificacion .fila-nuestra td {
+  color: var(--color-primary, #0c2c52);
+}
+
+.badge-nuestro {
+  display: inline-block;
+  background: #b8860b;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* En móvil, ocultar columnas menos importantes para no romper la tabla */
+@media (max-width: 600px) {
+  .table-clasificacion .col-extra {
+    display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .table-clasificacion th,
+  .table-clasificacion td {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.3rem;
+  }
+}
