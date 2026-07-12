@@ -1343,7 +1343,8 @@ main {
 .equipo-foto-grupal img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #0a2540;
   display: none; /* Por defecto oculta. Se muestra cuando carga bien (onload) */
   position: relative;
   z-index: 2;
