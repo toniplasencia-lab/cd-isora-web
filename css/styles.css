@@ -1712,3 +1712,216 @@ main {
     padding: 0.4rem 0.3rem;
   }
 }
+
+/* ============================================================================
+   Hero con foto del campo Tomas Hernandez Alonso
+   Escudo arriba centrado, textos centrados, todo apilado
+   ============================================================================ */
+
+.hero.hero--photo {
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 0 4rem;
+  color: #ffffff;
+  isolation: isolate;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+}
+
+.hero.hero--photo .hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-color: #0a2540; /* respaldo azul si sobra hueco lateral */
+  background-image: url('../img/hero-campo-isora.jpg');
+  background-size: 100% auto; /* ajustar por ancho: se ve la escena entera */
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+
+/* En pantallas muy anchas la foto queda pequeña arriba; empujar al top */
+@media (min-width: 1400px) {
+  .hero.hero--photo .hero__bg {
+    background-size: cover;
+    background-position: center 60%;
+  }
+}
+
+.hero.hero--photo .hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 30, 60, 0.45) 0%,
+    rgba(10, 30, 60, 0.30) 40%,
+    rgba(10, 30, 60, 0.50) 100%
+  );
+}
+
+.hero.hero--photo .hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.hero.hero--photo .hero__logo-wrap {
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: hero-logo-in 0.8s ease-out both;
+}
+
+.hero.hero--photo .hero__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
+}
+
+.hero.hero--photo .hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  max-width: 780px;
+  animation: hero-content-in 0.8s ease-out 0.15s both;
+}
+
+.hero.hero--photo .hero__eyebrow {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #d8e4ff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+}
+
+.hero.hero--photo h1 {
+  color: #ffffff;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.1;
+  margin: 0;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.hero.hero--photo .hero__brand {
+  color: #ffffff;
+}
+
+.hero.hero--photo .hero__subtitle {
+  color: rgba(240, 248, 255, 0.95);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  margin: 0;
+  max-width: 640px;
+  line-height: 1.5;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hero.hero--photo .hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.hero.hero--photo .btn--outline {
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  background: transparent;
+}
+
+.hero.hero--photo .btn--outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+}
+
+@keyframes hero-logo-in {
+  from { opacity: 0; transform: translateY(-12px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes hero-content-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Móvil */
+@media (max-width: 720px) {
+  .hero.hero--photo {
+    padding: 2.5rem 0 3rem;
+    min-height: 460px;
+  }
+  .hero.hero--photo .hero__logo-wrap {
+    width: 160px;
+    height: 160px;
+  }
+  .hero.hero--photo .hero__actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+  }
+  .hero.hero--photo .hero__actions .btn {
+    width: 100%;
+  }
+}
+
+/* ============================================================================
+   Columna de escudos en la tabla de clasificación
+   ============================================================================ */
+
+.table-clasificacion th.col-escudo,
+.table-clasificacion td.col-escudo {
+  width: 44px;
+  text-align: center;
+  padding: 0.35rem 0.25rem;
+  vertical-align: middle;
+}
+
+.escudo-tabla {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  vertical-align: middle;
+  border-radius: 4px;
+  background: transparent;
+}
+
+.escudo-tabla--txt {
+  background: linear-gradient(135deg, #0a2540 0%, #163e6b 100%);
+  color: #f0f0f0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 720px) {
+  .table-clasificacion th.col-escudo,
+  .table-clasificacion td.col-escudo {
+    width: 36px;
+    padding: 0.25rem 0.15rem;
+  }
+  .escudo-tabla {
+    width: 26px;
+    height: 26px;
+  }
+  .escudo-tabla--txt {
+    font-size: 9px;
+  }
+}

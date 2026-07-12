@@ -36,6 +36,57 @@
       return limpio;
     }
 
+    // Mapa de nombre del equipo (tal como viene del scraper) → nombre del archivo del escudo
+    // Los escudos están en img/escudos/<archivo>.png
+    // Los equipos sin escudo utilizable (Laszocas, Santiagoteide) usarán iniciales
+    const ESCUDOS = {
+      'Union Isora':          'Unionisora.png',
+      'C.D. Tegueste':        'Tegueste.png',
+      'S.J. Tablero':         'Tablero.png',
+      'A.U.Guimar B':         'Guimar.png',
+      'S.D. Valleseco':       'Valleseco.png',
+      'C.D. Santaca':         'Santaca.png',
+      'U.D. Playa':           'Playa.png',
+      'At. Alcala':           'Alcala.png',
+      'U.D. Salud':           'Salud.png',
+      'C.D. El Tranvia':      'Tranvia.png',
+      'Man. De Tajo':         'Manantial.png',
+      'C.D. Timaday':         'Timaday.png',
+      'U.D. Guargacho':       'Guargacho.png',
+      'C.D. Marino C':        'Marino.png',
+      'C.D. Aguilas C':       'Aguilas.png',
+      'C.D. Raqui C':         'Isidro.png',
+      'C.D. Villamar':        'Villamar.png',
+      'C.D. Buzanada B':      'Buzanada.png',
+      'C.D. Armeñime':        'Armenime.png',
+      'Fañabe C.F.':          'Fanabe.png',
+      'C.D. Anadona B':       'Cdamedano.png'
+      // Excluidos por escudo pobre: 'U.D. Las Zocas B', 'Santiago D.Teide B'
+    };
+
+    function iniciales(nombre) {
+      // Extraer 2-3 iniciales del nombre del equipo
+      const limpio = (nombre || '').replace(/[.,]/g, ' ').replace(/\s+/g, ' ').trim();
+      const palabras = limpio.split(' ').filter(p => p.length > 0 && !/^[BC]$/.test(p));
+      // Ignorar prefijos como CD, UD, SD, AU, SJ, At
+      const relevantes = palabras.filter(p =>
+        !/^(C|S|U|A|At)\.?[DJU]?\.?$/i.test(p)
+      );
+      const dos = relevantes.slice(0, 2);
+      if (dos.length === 0) return '?';
+      return dos.map(p => p[0].toUpperCase()).join('');
+    }
+
+    function escudoDe(nombre) {
+      const archivo = ESCUDOS[nombre];
+      if (archivo) {
+        return `<img src="img/escudos/${archivo}" alt="Escudo ${nombre}" class="escudo-tabla" loading="lazy" onerror="this.replaceWith(document.createRange().createContextualFragment('<span class=&quot;escudo-tabla escudo-tabla--txt&quot;>${iniciales(nombre)}</span>'))" />`;
+      }
+      // Fallback: iniciales
+      return `<span class="escudo-tabla escudo-tabla--txt">${iniciales(nombre)}</span>`;
+    }
+
+
     function formatFecha(iso) {
       if (!iso) return '';
       const d = new Date(iso);
@@ -133,9 +184,14 @@
         const dif = (f.diferencia ?? (f.goles_favor - f.goles_contra));
         const difTxt = dif > 0 ? `+${dif}` : `${dif}`;
 
+        // Para el escudo usamos el nombre EN CRUDO (tal como viene del scraper),
+        // no el bonito, porque el mapa ESCUDOS usa ese formato.
+        const escudo = escudoDe((f.nombre_equipo || '').trim());
+
         return `
           <tr class="${resaltar}">
             <td class="col-pos"><strong>${f.posicion}</strong></td>
+            <td class="col-escudo">${escudo}</td>
             <td>${nombre}${f.es_nuestro ? ' <span class="badge-nuestro">Nosotros</span>' : ''}</td>
             <td><strong>${f.puntos}</strong></td>
             <td class="col-extra">${f.jugados}</td>
