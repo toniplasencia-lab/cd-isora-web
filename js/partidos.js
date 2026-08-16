@@ -62,7 +62,7 @@ async function cargarProximos(equipoId) {
     .select("*, equipos(nombre, competicion)")
     .eq("jugado", false)
     .order("fecha", { ascending: true })
-    .limit(20);
+    .limit(38);
 
   if (equipoId) q = q.eq("equipo_id", equipoId);
 
@@ -96,7 +96,7 @@ async function cargarResultados(equipoId) {
     .select("*, equipos(nombre, competicion)")
     .eq("jugado", true)
     .order("fecha", { ascending: false })
-    .limit(20);
+    .limit(38);
 
   if (equipoId) q = q.eq("equipo_id", equipoId);
 
