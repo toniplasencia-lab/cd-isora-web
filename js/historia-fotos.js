@@ -57,12 +57,21 @@ window.HISTORIA_FOTOS = {
     { src: 'img/historia/anos_30_60/historia_18.jpeg', caption: 'Fotografía histórica del club' },
     { src: 'img/historia/anos_30_60/historia_19.jpeg', caption: 'Fotografía histórica del club' },
     { src: 'img/historia/anos_30_60/historia_20.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_30_60/historia_21.jpeg', caption: 'Fotografía histórica del club' },
   ],
 
-  // ---------------- AÑOS 60 a 80 (2 fotos) ----------------
+  // ---------------- AÑOS 60 a 80 (10 fotos) ----------------
   'anos_60_80': [
     { src: 'img/historia/anos_60_80/historia_1.jpeg', caption: 'Fotografía histórica del club' },
     { src: 'img/historia/anos_60_80/historia_2.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_3.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_4.jpeg', caption: 'Cromos de jugadores del C.D. Unión Isora - Colección "Obsequio Cigarrillos", año 1966' },
+    { src: 'img/historia/anos_60_80/historia_5.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_6.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_7.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_8.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_9.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_10.jpeg', caption: 'Fotografía histórica del club' },
   ],
 
   // ---------------- AÑOS 80 a 2010 (10 fotos) ----------------
