@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C.D. Unión Isora — Sitio web en construcción</title>
+<meta name="description" content="La nueva web oficial del Club Deportivo Unión Isora, con 94 años de historia en Guía de Isora, está en construcción. Muy pronto disponible.">
+<meta name="robots" content="index, follow">
+<link rel="icon" type="image/png" href="favicon-32x32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-primary: #0a2540;
+    --color-secondary: #d4af37;
+    --color-accent: #c8102e;
+    --color-white: #ffffff;
+    --font-heading: "Bebas Neue", "Oswald", "Arial Narrow", sans-serif;
+    --font-body: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--color-white);
+    background: radial-gradient(circle at 50% 0%, #143a66 0%, #0a2540 55%, #071a30 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Textura sutil de fondo tipo césped/estadio */
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 80px);
+    pointer-events: none;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .escudo {
+    width: 128px;
+    height: auto;
+    filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+    animation: fadeInDown 0.9s ease both;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(212, 175, 55, 0.14);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: var(--color-secondary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    animation: fadeInDown 0.9s ease 0.1s both;
+  }
+
+  .badge .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.4rem, 7vw, 3.6rem);
+    letter-spacing: 0.02em;
+    line-height: 1.05;
+    color: var(--color-white);
+    animation: fadeInUp 0.9s ease 0.15s both;
+  }
+
+  h1 span {
+    color: var(--color-secondary);
+  }
+
+  p.lead {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.82);
+    max-width: 480px;
+    animation: fadeInUp 0.9s ease 0.25s both;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--color-accent);
+    border-radius: 2px;
+    animation: fadeInUp 0.9s ease 0.2s both;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem 0.9rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    animation: fadeInUp 0.9s ease 0.3s both;
+  }
+
+  .meta span::after {
+    content: "·";
+    margin-left: 0.9rem;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .meta span:last-child::after {
+    content: "";
+    margin: 0;
+  }
+
+  .socials {
+    display: flex;
+    gap: 0.9rem;
+    margin-top: 0.4rem;
+    animation: fadeInUp 0.9s ease 0.35s both;
+  }
+
+  .socials a {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--color-white);
+    text-decoration: none;
+    transition: background 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .socials a:hover {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-primary);
+    transform: translateY(-3px);
+  }
+
+  .socials svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    margin-top: 2.5rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+    animation: fadeInUp 0.9s ease 0.4s both;
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.4; transform: scale(0.75); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .escudo, .badge, h1, p.lead, .divider, .meta, .socials, footer {
+      animation: none !important;
+    }
+    .badge .dot { animation: none !important; }
+  }
+
+  @media (max-width: 480px) {
+    .escudo { width: 100px; }
+    .meta span::after { margin-left: 0.6rem; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <img class="escudo" src="img/escudo-hero-color.png" alt="Escudo del C.D. Unión Isora">
+
+    <div class="badge"><span class="dot"></span> Sitio en construcción</div>
+
+    <h1>Estamos preparando<br>la nueva web del <span>C.D. Unión Isora</span></h1>
+
+    <div class="divider"></div>
+
+    <p class="lead">
+      94 años de historia, pasión y fútbol regional en Guía de Isora.
+      Muy pronto tendrás aquí toda la información del club: equipos, resultados,
+      historia y mucho más. Mientras tanto, síguenos en redes para no perderte nada.
+    </p>
+
+    <div class="meta">
+      <span>Cadetes</span>
+      <span>Juveniles</span>
+      <span>Regional</span>
+      <span>Femenino</span>
+      <span>Veteranos</span>
+      <span>Memorial Manuel Álvarez Vargas</span>
+    </div>
+
+    <div class="socials">
+      <a href="https://www.instagram.com/c.d.unionisora/" target="_blank" rel="noopener" aria-label="Instagram del club" title="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.16.46.35 1.26.4 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.16-1.26.35-2.43.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.24-1.97.4-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.59 1.8c.46-.16 1.26-.35 2.43-.4C9.29 1.34 9.67 1.33 12 1.33m0 1.63c-3.17 0-3.5.01-4.74.07-1 .04-1.54.21-1.9.35-.48.19-.82.41-1.17.77-.36.35-.58.7-.77 1.17-.14.36-.31.9-.35 1.9-.06 1.24-.07 1.57-.07 4.74s.01 3.5.07 4.74c.04 1 .21 1.54.35 1.9.19.48.41.82.77 1.17.35.36.7.58 1.17.77.36.14.9.31 1.9.35 1.24.06 1.57.07 4.74.07s3.5-.01 4.74-.07c1-.04 1.54-.21 1.9-.35.48-.19.82-.41 1.17-.77.36-.35.58-.7.77-1.17.14-.36.31-.9.35-1.9.06-1.24.07-1.57.07-4.74s-.01-3.5-.07-4.74c-.04-1-.21-1.54-.35-1.9a3.26 3.26 0 0 0-.77-1.17 3.26 3.26 0 0 0-1.17-.77c-.36-.14-.9-.31-1.9-.35-1.24-.06-1.57-.07-4.74-.07M12 6.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11m0 1.63a3.87 3.87 0 1 0 0 7.74 3.87 3.87 0 0 0 0-7.74m5.72-1.8a1.29 1.29 0 1 1-2.57 0 1.29 1.29 0 0 1 2.57 0"/></svg>
+      </a>
+      <a href="https://www.facebook.com/CD.UnionIsora/" target="_blank" rel="noopener" aria-label="Facebook del club" title="Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21v-8.1h2.7l.4-3.15h-3.1V7.7c0-.91.25-1.53 1.56-1.53h1.66V3.36C15.99 3.25 15.02 3.15 13.9 3.15c-2.34 0-3.94 1.43-3.94 4.05v2.6H7.25v3.15h2.71V21z"/></svg>
+      </a>
+      <a href="mailto:info@cdunionisora.es" aria-label="Escríbenos un correo" title="Correo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4h17A1.5 1.5 0 0 1 22 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18.5zm2.2.5 7.8 5.85L19.8 6zm-.7 1.1V18h17V7.1l-8.3 6.22a1 1 0 0 1-1.2 0z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <footer>© 2026 Club Deportivo Unión Isora · Guía de Isora, Tenerife</footer>
+</body>
+</html>
