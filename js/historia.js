@@ -63,7 +63,7 @@
 
     // Si hay muy pocas fotos, ralentizar aún más para que no parezca raro
     const totalElementos = fotosParaPintar.length;
-    const duracion = Math.max(45, totalElementos * 9); // segundos
+    const duracion = Math.max(32, totalElementos * 6); // segundos
     marco.style.animationDuration = duracion + 's';
   });
 
