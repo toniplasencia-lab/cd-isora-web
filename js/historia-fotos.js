@@ -72,6 +72,16 @@ window.HISTORIA_FOTOS = {
     { src: 'img/historia/anos_60_80/historia_8.jpeg', caption: 'Fotografía histórica del club' },
     { src: 'img/historia/anos_60_80/historia_9.jpeg', caption: 'Fotografía histórica del club' },
     { src: 'img/historia/anos_60_80/historia_10.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_11.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_12.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_13.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_14.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_15.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_16.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_17.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_18.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_19.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_60_80/historia_20.jpeg', caption: 'Fotografía histórica del club' },
   ],
 
   // ---------------- AÑOS 80 a 2010 (10 fotos) ----------------
