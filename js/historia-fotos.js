@@ -96,6 +96,11 @@ window.HISTORIA_FOTOS = {
     { src: 'img/historia/anos_80_2010/historia_8.jpeg',  caption: 'Fotografía histórica del club' },
     { src: 'img/historia/anos_80_2010/historia_9.jpeg',  caption: 'Fotografía histórica del club' },
     { src: 'img/historia/anos_80_2010/historia_10.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_80_2010/historia_11.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_80_2010/historia_12.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_80_2010/historia_13.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_80_2010/historia_14.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_80_2010/historia_15.jpeg', caption: 'Fotografía histórica del club' },
   ],
 
   // ---------------- AÑOS 2010 a la actualidad (24 fotos) ----------------
@@ -124,6 +129,11 @@ window.HISTORIA_FOTOS = {
     { src: 'img/historia/anos_2010_actualidad/historia_22.jpeg', caption: 'Fotografía histórica del club' },
     { src: 'img/historia/anos_2010_actualidad/historia_23.jpeg', caption: 'Fotografía histórica del club' },
     { src: 'img/historia/anos_2010_actualidad/historia_24.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_2010_actualidad/historia_25.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_2010_actualidad/historia_26.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_2010_actualidad/historia_27.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_2010_actualidad/historia_28.jpeg', caption: 'Fotografía histórica del club' },
+    { src: 'img/historia/anos_2010_actualidad/historia_29.jpeg', caption: 'Fotografía histórica del club' },
   ],
 
 };
