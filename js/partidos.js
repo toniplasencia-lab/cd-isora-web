@@ -23,6 +23,13 @@ function esIsora(nombre) {
   return /uni[oó]n\s*isora|union\s*isora/i.test(nombre);
 }
 
+/** Construye el enlace a la ficha/alineación del partido en ftf.es a partir del CodActa */
+function enlaceAlineacion(codActa) {
+  if (!codActa) return "";
+  const url = `https://www.ftf.es/pnfg/NPcd/NFG_CmpPartido?cod_primaria=1000120&CodActa=${encodeURIComponent(codActa)}`;
+  return `<a href="${url}" target="_blank" rel="noopener" class="btn-mini" style="background:#0a2540;">Ver alineación</a>`;
+}
+
 /** Calcula el resultado desde el punto de vista del CD Unión Isora */
 function estadoResultado(p) {
   if (p.goles_local === null || p.goles_visitante === null) return null;
@@ -73,7 +80,7 @@ async function cargarProximos(equipoId) {
   if (!tbody) return;
 
   if (!data.length) {
-    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--color-muted);">No hay partidos programados</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color:var(--color-muted);">No hay partidos programados</td></tr>`;
     return;
   }
 
@@ -85,6 +92,7 @@ async function cargarProximos(equipoId) {
       <td>${esIsora(p.local) ? `<strong>${p.local}</strong>` : p.local}</td>
       <td>${esIsora(p.visitante) ? `<strong>${p.visitante}</strong>` : p.visitante}</td>
       <td>${p.equipos?.nombre ?? ""}</td>
+      <td>${enlaceAlineacion(p.cod_acta) || "-"}</td>
     </tr>
   `).join("");
 }
@@ -107,7 +115,7 @@ async function cargarResultados(equipoId) {
   if (!tbody) return;
 
   if (!data.length) {
-    tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:var(--color-muted);">Sin resultados todavía</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; color:var(--color-muted);">Sin resultados todavía</td></tr>`;
     return;
   }
 
@@ -120,6 +128,7 @@ async function cargarResultados(equipoId) {
         <td>${p.local} vs ${p.visitante}</td>
         <td><strong>${p.goles_local} - ${p.goles_visitante}</strong></td>
         <td>${r ? `<span class="badge ${r.clase}">${r.label}</span>` : ""}</td>
+        <td>${enlaceAlineacion(p.cod_acta) || "-"}</td>
       </tr>
     `;
   }).join("");
