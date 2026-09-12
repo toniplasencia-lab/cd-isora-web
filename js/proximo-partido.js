@@ -12,6 +12,7 @@
 
   const sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
   const cuerpo = document.getElementById("proximo-partido-body");
+  const pie = document.getElementById("proximo-partido-footer");
   if (!cuerpo) return;
 
   // Formatea YYYY-MM-DD a "Sábado 21 de junio"
@@ -71,6 +72,7 @@
     const condicion = isoraLocal ? "Local" : "Visitante";
     const fecha = fechaBonita(p.fecha);
     const hora = p.hora ? p.hora.substring(0, 5) : "Por confirmar";
+    const campo = p.campo || (isoraLocal ? "Campo Municipal Tomás Hernández Alonso (Guía de Isora)" : null);
 
     cuerpo.innerHTML = `
       <div class="proximo-partido__match">
@@ -100,8 +102,22 @@
           <span class="proximo-partido__info-label">🏆 Competición</span>
           <span class="proximo-partido__info-value">${equipo.competicion || "—"}</span>
         </div>
+        <div class="proximo-partido__info-item">
+          <span class="proximo-partido__info-label">📍 Campo</span>
+          <span class="proximo-partido__info-value">${campo || "Por confirmar"}</span>
+        </div>
       </div>
     `;
+
+    if (pie) {
+      const btnCampo = pie.querySelector(".proximo-partido__btn-campo");
+      if (btnCampo) btnCampo.remove();
+      if (campo) {
+        const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(campo)}`;
+        pie.insertAdjacentHTML("beforeend",
+          `<a href="${url}" target="_blank" rel="noopener" class="btn btn--sm proximo-partido__btn-campo">\uD83D\uDCCD Cómo llegar al campo</a>`);
+      }
+    }
   }
 
   function mostrarVacio() {
