@@ -66,6 +66,25 @@
     }
   }
 
+  function bloqueEquipo(nombre, esIsoraEquipo) {
+    if (esIsoraEquipo) {
+      return `
+        <div class="proximo-partido__team proximo-partido__team--isora">
+          <img src="img/logo-club.png" alt="CD Unión Isora" />
+          <span>CD Unión Isora</span>
+        </div>`;
+    }
+    const escudoUrl = window.cdIsoraEscudoUrl ? window.cdIsoraEscudoUrl(nombre) : null;
+    const icono = escudoUrl
+      ? `<img src="${escudoUrl}" alt="${nombre}" onerror="this.outerHTML='<div class=&quot;proximo-partido__rival-icon&quot;>⚽</div>'" />`
+      : `<div class="proximo-partido__rival-icon">⚽</div>`;
+    return `
+      <div class="proximo-partido__team proximo-partido__team--rival">
+        ${icono}
+        <span>${nombre}</span>
+      </div>`;
+  }
+
   function pintarPartido(p, equipo) {
     const isoraLocal = esIsora(p.local);
     const rival = isoraLocal ? p.visitante : p.local;
@@ -74,20 +93,19 @@
     const hora = p.hora ? p.hora.substring(0, 5) : "Por confirmar";
     const campo = p.campo || (isoraLocal ? "Campo Municipal Tomás Hernández Alonso (Guía de Isora)" : null);
 
+    // El equipo local va siempre a la izquierda y el visitante a la derecha,
+    // igual que en la notación habitual "Local - VS - Visitante".
+    const bloqueLocal = bloqueEquipo(isoraLocal ? "CD Unión Isora" : p.local, isoraLocal);
+    const bloqueVisitante = bloqueEquipo(isoraLocal ? p.visitante : "CD Unión Isora", !isoraLocal);
+
     cuerpo.innerHTML = `
       <div class="proximo-partido__match">
-        <div class="proximo-partido__team proximo-partido__team--isora">
-          <img src="img/logo-club.png" alt="CD Unión Isora" />
-          <span>CD Unión Isora</span>
-        </div>
+        ${bloqueLocal}
         <div class="proximo-partido__vs">
           <span class="proximo-partido__vs-label">VS</span>
           <span class="proximo-partido__condicion">${condicion}</span>
         </div>
-        <div class="proximo-partido__team proximo-partido__team--rival">
-          <div class="proximo-partido__rival-icon">⚽</div>
-          <span>${rival}</span>
-        </div>
+        ${bloqueVisitante}
       </div>
       <div class="proximo-partido__info">
         <div class="proximo-partido__info-item">

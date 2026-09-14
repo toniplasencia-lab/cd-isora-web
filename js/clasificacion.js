@@ -36,33 +36,9 @@
       return limpio;
     }
 
-    // Mapa de nombre del equipo (tal como viene del scraper) → nombre del archivo del escudo
-    // Los escudos están en img/escudos/<archivo>.png
-    // Los equipos sin escudo utilizable (Laszocas, Santiagoteide) usarán iniciales
-    const ESCUDOS = {
-      'Union Isora':          'Unionisora.png',
-      'C.D. Tegueste':        'Tegueste.png',
-      'S.J. Tablero':         'Tablero.png',
-      'A.U.Guimar B':         'Guimar.png',
-      'S.D. Valleseco':       'Valleseco.png',
-      'C.D. Santaca':         'Santaca.png',
-      'U.D. Playa':           'Playa.png',
-      'At. Alcala':           'Alcala.png',
-      'U.D. Salud':           'Salud.png',
-      'C.D. El Tranvia':      'Tranvia.png',
-      'Man. De Tajo':         'Manantial.png',
-      'C.D. Timaday':         'Timaday.png',
-      'U.D. Guargacho':       'Guargacho.png',
-      'C.D. Marino C':        'Marino.png',
-      'C.D. Aguilas C':       'Aguilas.png',
-      'C.D. Raqui C':         'Isidro.png',
-      'C.D. Villamar':        'Villamar.png',
-      'C.D. Buzanada B':      'Buzanada.png',
-      'C.D. Armeñime':        'Armenime.png',
-      'Fañabe C.F.':          'Fanabe.png',
-      'C.D. Anadona B':       'Cdamedano.png'
-      // Excluidos por escudo pobre: 'U.D. Las Zocas B', 'Santiago D.Teide B'
-    };
+    // El mapa nombre de equipo → archivo de escudo vive en js/escudos.js (compartido
+    // con el widget de próximo partido), para no duplicar ni desincronizar datos.
+    const ESCUDOS = window.CD_ISORA_ESCUDOS || {};
 
     function iniciales(nombre) {
       // Extraer 2-3 iniciales del nombre del equipo
