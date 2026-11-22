@@ -22,6 +22,7 @@ export interface PartidoScrapeado {
   visitante: string;
   goles_local: number | null;
   goles_visitante: number | null;
+  cod_acta?: string;
   /** Clave para detectar duplicados al hacer upsert */
   uniq_key: string;
 }

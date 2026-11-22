@@ -32,7 +32,7 @@ function slug(s: string): string {
 }
 
 /* ============================================================================
- *  Parser de partidos (sin cambios respecto al original)
+ *  Parser de partidos
  * ============================================================================ */
 
 function extraerFragmentos(html: string): string[] {
@@ -54,7 +54,59 @@ function extraerFragmentos(html: string): string[] {
   return idx >= 0 ? fragmentos.slice(idx + 1) : fragmentos;
 }
 
+function nombreValido(s: string): boolean {
+  return /\p{L}/u.test(s) && !isHora(s) && !isFecha(s);
+}
+
+function parseTarjetas(html: string): PartidoScrapeado[] | null {
+  const $ = cheerio.load(html);
+  const titulo = $('div').filter((_, el) =>
+    clean($(el).clone().children().remove().end().text()).startsWith('TODOS LOS PARTIDOS DEL')
+  ).first();
+  const tarjetas = titulo.siblings('div.border.rounded');
+  if (!tarjetas.length) return null;
+
+  const partidos: PartidoScrapeado[] = [];
+  tarjetas.each((_, el) => {
+    const filas = $(el).children('div');
+    if (filas.length !== 3) return;
+    const cabecera = filas.eq(0).children('div');
+    const marcador = filas.eq(1).children('div');
+    const equipos = filas.eq(2).children('div');
+    if (cabecera.length !== 4 || marcador.length !== 3 || equipos.length !== 3) return;
+    const jornadaTexto = clean(cabecera.eq(0).text()).match(/^J(\d{1,2})$/i);
+    const fechaTexto = clean(cabecera.eq(1).text());
+    const horaTexto = clean(cabecera.eq(3).text());
+    const local = clean(equipos.eq(0).text());
+    const visitante = clean(equipos.eq(2).text());
+    const goles = marcador.eq(1).children('div').map((_, div) => clean($(div).text())).get().filter(Boolean);
+    if (!jornadaTexto || !isFecha(fechaTexto) || !nombreValido(local) ||
+        !nombreValido(visitante) || goles.length !== 2) return;
+
+    const jornada = Number(jornadaTexto[1]);
+    const fecha = toIsoDate(fechaTexto);
+    if (!jornada || !Number.isFinite(Date.parse(fecha)) ||
+        new Date(fecha).toISOString().slice(0, 10) !== fecha) return;
+    const estado = clean(cabecera.eq(2).text());
+    const finalizado = goles.every(isNumero) && !/aplaz|suspend|pendient/i.test(estado);
+    partidos.push({
+      jornada, fecha, hora: isHora(horaTexto) ? horaTexto : null,
+      local, visitante,
+      goles_local: finalizado ? Number(goles[0]) : null,
+      goles_visitante: finalizado ? Number(goles[1]) : null,
+      uniq_key: jornada + '-' + fecha + '-' + slug(local) + '-' + slug(visitante),
+    });
+  });
+  return partidos;
+}
+
 export function parsePartidos(html: string, nombreClub: string): PartidoScrapeado[] {
+  const club = '-' + slug(nombreClub) + '-';
+  const esDelClub = (p: PartidoScrapeado) =>
+    ('-' + slug(p.local) + '-').includes(club) || ('-' + slug(p.visitante) + '-').includes(club);
+  const tarjetas = parseTarjetas(html);
+  if (tarjetas !== null) return tarjetas.filter(esDelClub);
+
   const frags = extraerFragmentos(html);
   const partidos: PartidoScrapeado[] = [];
 
@@ -90,11 +142,18 @@ export function parsePartidos(html: string, nombreClub: string): PartidoScrapead
       golesVisitante = parseInt(frags[i + 5]!);
       visitante = frags[i + 6]!;
       nextIndex = i + 7;
+    } else if (/^[-–—]$/.test(frags[i + 4]!) && /^[-–—]$/.test(frags[i + 5] ?? '')) {
+      visitante = frags[i + 6] ?? '';
+      nextIndex = i + 7;
     } else {
       visitante = frags[i + 4]!;
       nextIndex = i + 5;
     }
 
+    if (!nombreValido(local) || !nombreValido(visitante)) {
+      i++;
+      continue;
+    }
     partidos.push({
       jornada,
       fecha,
@@ -109,11 +168,7 @@ export function parsePartidos(html: string, nombreClub: string): PartidoScrapead
     i = nextIndex;
   }
 
-  const norm = nombreClub.toLowerCase();
-  return partidos.filter(p =>
-    p.local.toLowerCase().includes(norm) ||
-    p.visitante.toLowerCase().includes(norm)
-  );
+  return partidos.filter(esDelClub);
 }
 
 /* ============================================================================

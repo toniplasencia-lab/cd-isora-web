@@ -1,6 +1,7 @@
 import { request } from 'undici';
 import { supabase } from './supabase.js';
 import { parsePartidos, parseClasificacion } from './parser.js';
+import { parseResultadosWana } from './wanafutbol.js';
 import type { Equipo, PartidoScrapeado, ClasificacionScrapeada } from './types.js';
 
 const DEBUG = process.env.DEBUG === '1';
@@ -51,6 +52,7 @@ async function guardarPartidos(equipo: Equipo, partidos: PartidoScrapeado[]) {
     visitante: p.visitante,
     goles_local: p.goles_local,
     goles_visitante: p.goles_visitante,
+    ...(p.cod_acta ? { cod_acta: p.cod_acta } : {}),
     uniq_key: p.uniq_key,
     updated_at: new Date().toISOString(),
   }));
@@ -98,7 +100,10 @@ async function guardarClasificacion(equipo: Equipo, filas: ClasificacionScrapead
 async function procesarPartidos(eq: Equipo) {
   const html = await descargarHTML(eq.url_federacion);
   debug('  HTML partidos ' + html.length + ' bytes');
-  const partidos = parsePartidos(html, NOMBRE_CLUB);
+  const host = new URL(eq.url_federacion).hostname;
+  const partidos = host === 'wanafutbol.com'
+    ? parseResultadosWana(html, eq.url_federacion)
+    : parsePartidos(html, NOMBRE_CLUB);
   debug('  Parseados ' + partidos.length + ' partidos');
   await guardarPartidos(eq, partidos);
 }
