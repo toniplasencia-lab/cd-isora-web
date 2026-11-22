@@ -130,6 +130,16 @@
         </div>
       </section>
 
+      <section class="section" aria-labelledby="resultados-portada-titulo">
+        <h2 class="section__title" id="resultados-portada-titulo">Últimos resultados por equipo</h2>
+        <p class="resultados-portada__intro">Los últimos marcadores del Cadete y del Femenino del CD Unión Isora.</p>
+        <div id="resultados-portada" aria-live="polite" aria-busy="true">
+          <p class="resultados-portada__aviso">Cargando resultados…</p>
+        </div>
+        <noscript><p>Activa JavaScript para ver el resumen por equipo.</p></noscript>
+        <a class="fed-card__link" href="partidos.html#resultados">Ver todos los resultados</a>
+      </section>
+
       <!-- ============== FEDERACIÓN TINERFEÑA ============== -->
       <section class="section">
         <div class="fed-banner">
@@ -350,7 +360,7 @@
     </div>
   </footer>
 
-  <!-- Cliente de Supabase para el próximo partido -->
+  <!-- Cliente de Supabase para el próximo partido y los últimos resultados -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="js/config.js"></script>
   <script src="js/escudos.js"></script>
@@ -359,6 +369,7 @@
   <script src="js/colaboradores.js"></script>
   <script src="js/fechas-partidos.js"></script>
   <script src="js/proximo-partido.js"></script>
+  <script src="js/resultados-portada.js"></script>
   <script src="js/patrocinador-banner.js"></script>
 </body>
 </html>
