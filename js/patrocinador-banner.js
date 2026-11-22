@@ -5,8 +5,8 @@
  * combina, si están disponibles:
  *  1. El patrocinador de la semana (tabla `patrocinador_semanal`), con
  *     su imagen grande — igual que hasta ahora.
- *  2. Una fila de logos institucionales y de empresas patrocinadoras
- *     destacadas (tabla `banner_entidades`).
+ *  2. Los logos institucionales del Ayuntamiento y la FIFT
+ *     (tabla `banner_entidades`).
  * Es solo informativo: se cierra con la X, pulsando fuera del cuadro
  * o con la tecla Escape.
  *
@@ -18,15 +18,13 @@
  *  3. Marca "activo" = true en la fila que quieras mostrar esa semana
  *     (y false en las demás, si tienes varias preparadas).
  *
- * Gestión de logos institucionales / patrocinadores destacados
+ * Gestión de logos institucionales del Ayuntamiento y la FIFT
  * (tabla "banner_entidades", sin tocar código ni GitHub):
  *  1. Sube el logo al mismo bucket de Storage "patrocinadores" y
  *     copia su URL pública.
- *  2. Añade una fila nueva en la tabla "banner_entidades": `tipo`
- *     ("institucional" o "patrocinador"), `nombre`, `imagen_url`,
- *     `orden` (número para el orden de aparición) y `activo` = true.
- *  3. Todas las filas con `activo` = true aparecen juntas en una fila
- *     de logos dentro del mismo banner de entrada.
+ *  2. Actualiza la imagen de su fila en "banner_entidades". Conserva el
+ *     `nombre`, el `tipo` institucional y `activo` = true.
+ *     Las demás entidades no aparecen en esta fila del banner.
  */
 
 (function () {
@@ -37,6 +35,7 @@
   }
 
   const sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+  const instituciones = ["Ayuntamiento de Guía de Isora - Deportes", "FIFT"];
 
   async function cargar() {
     try {
@@ -49,8 +48,10 @@
           .limit(1),
         sb
           .from("banner_entidades")
-          .select("tipo, nombre, imagen_url, enlace_url")
+          .select("nombre, imagen_url, enlace_url")
           .eq("activo", true)
+          .eq("tipo", "institucional")
+          .in("nombre", instituciones)
           .order("orden", { ascending: true }),
       ]);
 
