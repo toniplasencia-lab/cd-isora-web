@@ -51,6 +51,7 @@
         .select("*")
         .eq("equipo_id", equipoRegional.id)
         .eq("jugado", false)
+        .gte("fecha", window.cdIsoraFechaCanaria())
         .order("fecha", { ascending: true })
         .limit(1);
 

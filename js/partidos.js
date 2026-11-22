@@ -2,7 +2,7 @@
  * Carga dinámica de partidos desde Supabase para la página partidos.html.
  *
  * Requiere:
- *   - /js/config.js  (con SUPABASE_URL y SUPABASE_ANON_KEY)
+ *   - /js/config.js y /js/fechas-partidos.js
  *   - El cliente oficial de Supabase cargado por CDN en el HTML
  */
 
@@ -62,12 +62,13 @@ async function cargarEquipos() {
   return data;
 }
 
-/** Carga próximos partidos (sin jugar, ordenados por fecha) */
+/** Carga partidos sin jugar, desde hoy en Canarias, ordenados por fecha. */
 async function cargarProximos(equipoId) {
   let q = sb
     .from("partidos")
     .select("*, equipos(nombre, competicion)")
     .eq("jugado", false)
+    .gte("fecha", window.cdIsoraFechaCanaria())
     .order("fecha", { ascending: true })
     .limit(38);
 
