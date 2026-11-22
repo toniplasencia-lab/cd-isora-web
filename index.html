@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>C.D. Unión Isora — Sitio web en construcción</title>
-<meta name="description" content="La nueva web oficial del Club Deportivo Unión Isora, con 94 años de historia en Guía de Isora, está en construcción. Muy pronto disponible.">
+<meta name="description" content="Consulta los últimos resultados del Cadete y del Femenino del C.D. Unión Isora, club de fútbol de Guía de Isora. La nueva web oficial está en construcción.">
 <meta name="robots" content="index, follow">
 <link rel="icon" type="image/png" href="favicon-32x32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,10 +22,6 @@
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html, body {
-    height: 100%;
-  }
-
   body {
     font-family: var(--font-body);
     color: var(--color-white);
@@ -38,7 +34,6 @@
     text-align: center;
     padding: 2rem 1.5rem;
     position: relative;
-    overflow: hidden;
   }
 
   /* Textura sutil de fondo tipo césped/estadio */
@@ -142,6 +137,67 @@
     margin: 0;
   }
 
+  .resultados {
+    align-self: stretch;
+    min-width: 0;
+    text-align: left;
+  }
+
+  .resultados h2 {
+    margin-bottom: 0.65rem;
+    font-family: var(--font-heading);
+    font-size: 1.7rem;
+    font-weight: 400;
+    letter-spacing: 0.025em;
+  }
+
+  .resultados__lista {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    list-style: none;
+  }
+
+  .resultados__tarjeta {
+    min-width: 0;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 0.65rem;
+    background: rgba(255, 255, 255, 0.055);
+  }
+
+  .resultados__tarjeta h3 {
+    color: var(--color-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .resultados__fecha, .resultados__estado {
+    color: #c6d3e2;
+    font-size: 0.83rem;
+  }
+
+  .resultados__fecha {
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .resultados__fila {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: baseline;
+    padding: 0.4rem 0;
+    font-size: 0.92rem;
+    overflow-wrap: anywhere;
+  }
+
+  .resultados__fila + .resultados__fila {
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  .resultados__fila strong { font-variant-numeric: tabular-nums; }
+
   .socials {
     display: flex;
     gap: 0.9rem;
@@ -210,6 +266,7 @@
   @media (max-width: 480px) {
     .escudo { width: 100px; }
     .meta span::after { margin-left: 0.6rem; }
+    .resultados__lista { grid-template-columns: minmax(0, 1fr); }
   }
 </style>
 </head>
@@ -225,9 +282,17 @@
 
     <p class="lead">
       94 años de historia, pasión y fútbol regional en Guía de Isora.
-      Muy pronto tendrás aquí toda la información del club: equipos, resultados,
-      historia y mucho más. Mientras tanto, síguenos en redes para no perderte nada.
+      Muy pronto tendrás aquí toda la información del club: equipos, historia
+      y mucho más. Mientras tanto, consulta los últimos marcadores y síguenos en redes.
     </p>
+
+    <section class="resultados" aria-labelledby="titulo-resultados">
+      <h2 id="titulo-resultados">Últimos resultados</h2>
+      <div id="resultados-portada" aria-live="polite" aria-busy="true">
+        <p class="resultados__estado">Cargando marcadores de Cadete y Femenino…</p>
+      </div>
+      <noscript><p class="resultados__estado">Activa JavaScript para consultar los marcadores.</p></noscript>
+    </section>
 
     <div class="meta">
       <span>Cadetes</span>
@@ -252,5 +317,7 @@
   </div>
 
   <footer>© 2026 Club Deportivo Unión Isora · Guía de Isora, Tenerife</footer>
+  <script src="js/config.js" defer></script>
+  <script src="js/resultados-portada.js" defer></script>
 </body>
 </html>
